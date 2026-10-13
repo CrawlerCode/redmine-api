@@ -1,0 +1,18 @@
+# One project per Redmine version (e.g. `redmine-api-tests-7-0`), so several versions can run in parallel
+name: redmine-api-tests-${REDMINE_INSTANCE:-7}
+
+services:
+  redmine:
+    image: ${REDMINE_IMAGE:-redmine:7}
+    # Tags like `7` move with new releases, so check for a newer image once a day
+    pull_policy: daily
+    ports:
+      # Without REDMINE_PORT, Docker picks a free host port
+      - "127.0.0.1:${REDMINE_PORT:-}:3000"
+    environment:
+      # Uses the image's default SQLite database
+      REDMINE_SECRET_KEY_BASE: redmine-api-tests
+      # Also needed by `rails runner` via `docker compose exec`, which skips the entrypoint
+      SECRET_KEY_BASE: redmine-api-tests
+    volumes:
+      - ./setup:/tests-setup:ro

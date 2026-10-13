@@ -1,0 +1,14 @@
+{
+  "name": "dev",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "redmine-api-client": "workspace:*"
+  },
+  "devDependencies": {}
+}

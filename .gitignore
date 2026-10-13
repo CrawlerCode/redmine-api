@@ -1,0 +1,9 @@
+# Default TypeSpec output
+tsp-output/
+dist/
+
+# Dependency directories
+node_modules/
+
+# Environment files
+.env

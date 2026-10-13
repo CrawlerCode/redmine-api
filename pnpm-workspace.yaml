@@ -1,0 +1,10 @@
+packages:
+  - dev
+  - spec
+  - tests
+  - spec/tsp-output/clients/js
+
+overrides:
+  "@alloy-js/core": 0.25.0
+  "@alloy-js/typescript": 0.25.0
+  "@typespec/emitter-framework": 0.21.0
