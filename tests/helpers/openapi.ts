@@ -6,7 +6,7 @@ import { parse } from "yaml";
 type JsonSchema = Record<string, any>;
 type Operation = { responses: Record<string, { content?: Record<string, { schema: JsonSchema }> }> };
 
-const specDir = new URL("../../spec/tsp-output/schema/openapi/", import.meta.url);
+const specDir = new URL("../../schema/openapi/", import.meta.url);
 
 const compareVersions = (a: string, b: string) => {
   const [pa, pb] = [a, b].map((v) => v.split(".").map(Number));

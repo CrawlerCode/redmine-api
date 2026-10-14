@@ -7,7 +7,7 @@ A [TypeSpec](https://typespec.io) specification of the [Redmine REST API](https:
 | Folder | Content |
 | --- | --- |
 | [`spec/`](spec) | The TypeSpec spec. One folder per API resource (`models.tsp`, `dtos.tsp`, `queries.tsp`, `service.tsp`), shared models in `shared/`, Redmine releases in `server-versions.tsp`. |
-| `spec/tsp-output/schema/openapi/` | Generated OpenAPI 3.1 documents, one per Redmine version (`openapi.<version>.yaml`). |
+| [`schema/openapi/`](schema/openapi) | Generated OpenAPI 3.1 documents, one per Redmine version (`openapi.<version>.yaml`). |
 | `spec/tsp-output/clients/js/` | Generated TypeScript client (`redmine-api-client`), a workspace package. |
 | [`tests/`](tests) | Integration tests against Redmine in Docker. |
 | [`dev/`](dev) | Scratch script for trying the client against your own Redmine. |
