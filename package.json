@@ -11,8 +11,8 @@
     "dev": "pnpm --filter dev run dev",
     "spec:compile:watch": "pnpm --filter spec run compile:watch",
     "spec:compile": "pnpm --filter spec run compile",
-    "client:build": "pnpm --filter redmine-api-client run build",
-    "build": "pnpm spec:compile && pnpm client:build && pnpm run format",
+    "client:build": "pnpm --filter \"redmine-api-client...\" run build",
+    "build": "pnpm spec:compile && pnpm client:build",
     "test": "pnpm --filter tests run test",
     "format": "prettier --write ."
   },

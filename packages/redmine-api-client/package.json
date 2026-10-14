@@ -1,0 +1,27 @@
+{
+  "name": "redmine-api-client",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@typespec/ts-http-runtime": "0.2.1",
+    "uri-template": "^2.0.0"
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "redmine-api-client-generated": "workspace:*",
+    "tsdown": "^0.23.1",
+    "typescript": "^5.9.3"
+  }
+}

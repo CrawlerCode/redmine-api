@@ -2,7 +2,8 @@ packages:
   - dev
   - spec
   - tests
-  - spec/tsp-output/clients/js
+  - packages/*
+  - generated/*
 
 overrides:
   "@alloy-js/core": 0.25.0
