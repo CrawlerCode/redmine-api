@@ -46,7 +46,8 @@ model GetIssuesQuery {
    * Filter by issue ID or list of IDs
    */
   @Versioning.added(RedmineServerVersion.`3.3.0`)
-  @query(#{ explode: false }) issue_id?: safeint[];
+  @query(#{ explode: false })
+  issue_id?: safeint[];
 
   /**
    * Filter by project ID (a numeric value, not a project identifier)

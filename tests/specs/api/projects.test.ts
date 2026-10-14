@@ -1,14 +1,6 @@
 import { type CreateProject, type Project, ProjectQueryInclude } from "redmine-api-client";
 import { afterEach, describe, expect, inject, it } from "vitest";
-import {
-  createAdminClient,
-  createTestClient,
-  describeOperation,
-  expectHttpError,
-  firstPage,
-  spec,
-  withResponse,
-} from "../../helpers/client.ts";
+import { createAdminClient, createTestClient, describeOperation, expectHttpError, firstPage, spec, withResponse } from "../../helpers/client.ts";
 import { createIssueCategory, createProject, unique } from "../../helpers/fixtures.ts";
 import { expectPagination } from "../../helpers/pagination.ts";
 
@@ -33,9 +25,7 @@ describe("Projects API", () => {
       const project = await newProject();
 
       const v = withResponse("Projects_getProjects");
-      const page = await firstPage(
-        client.projectsClient.getProjects({ include: [ProjectQueryInclude.Trackers], ...v.options }),
-      );
+      const page = await firstPage(client.projectsClient.getProjects({ include: [ProjectQueryInclude.Trackers], ...v.options }));
       v.expectValid();
       expect(page.projects.map((p: Project) => p.id)).toContain(project.id);
     });
@@ -43,9 +33,7 @@ describe("Projects API", () => {
     it("paginates with offset and limit", async () => {
       for (let i = 0; i < 4; i++) await newProject();
 
-      await expectPagination("Projects_getProjects", "projects", (options) =>
-        client.projectsClient.getProjects(options),
-      );
+      await expectPagination("Projects_getProjects", "projects", (options) => client.projectsClient.getProjects(options));
     });
 
     it("includes trackers only when requested", async () => {
@@ -76,7 +64,10 @@ describe("Projects API", () => {
       /** Gets the project with and without the include, validated against the spec */
       async function getWithAndWithout(id: number, include: ProjectQueryInclude) {
         const v = withResponse("Projects_getProject");
-        const { project: withInclude } = await client.projectsClient.getProject(id, { include: [include], ...v.options });
+        const { project: withInclude } = await client.projectsClient.getProject(id, {
+          include: [include],
+          ...v.options,
+        });
         v.expectValid();
         const { project: without } = await client.projectsClient.getProject(id);
         return { withInclude, without };
@@ -113,9 +104,7 @@ describe("Projects API", () => {
         const { timeEntryActivities } = await client.enumerationsClient.getTimeEntryActivities();
 
         const { withInclude, without } = await getWithAndWithout(project.id, ProjectQueryInclude.TimeEntryActivities);
-        expect(withInclude.timeEntryActivities?.map((a) => a.id).sort()).toEqual(
-          timeEntryActivities.map((a) => a.id).sort(),
-        );
+        expect(withInclude.timeEntryActivities?.map((a) => a.id).sort()).toEqual(timeEntryActivities.map((a) => a.id).sort());
         expect(without.timeEntryActivities).toBeUndefined();
       });
 

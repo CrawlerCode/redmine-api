@@ -1,13 +1,6 @@
 import { type CreateUser, type User, UserQueryInclude, UserStatus } from "redmine-api-client";
 import { afterEach, describe, expect, it } from "vitest";
-import {
-  createAdminClient,
-  createTestClient,
-  describeOperation,
-  expectHttpError,
-  firstPage,
-  withResponse,
-} from "../../helpers/client.ts";
+import { createAdminClient, createTestClient, describeOperation, expectHttpError, firstPage, withResponse } from "../../helpers/client.ts";
 import { addMember, createGroup, createProject, createUser, unique } from "../../helpers/fixtures.ts";
 import { expectPagination, pageIds } from "../../helpers/pagination.ts";
 
@@ -157,7 +150,9 @@ describe("Users API", () => {
 
       const v = withResponse("Users_createUser");
       const { user } = await client.usersClient.createUser(
-        { user: { login, firstname: "First", lastname: "Last", mail: `${login}@example.com`, password: "Password123!" } },
+        {
+          user: { login, firstname: "First", lastname: "Last", mail: `${login}@example.com`, password: "Password123!" },
+        },
         v.options,
       );
       createdIds.push(user.id);

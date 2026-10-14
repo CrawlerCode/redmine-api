@@ -37,7 +37,14 @@ export async function createIssue(client: RedmineClient, projectId: number, issu
 export async function createUser(client: RedmineClient, user: Partial<CreateUser> = {}) {
   const login = unique("user");
   const { user: created } = await client.usersClient.createUser({
-    user: { login, firstname: "Test", lastname: login, mail: `${login}@example.com`, password: "Password123!", ...user },
+    user: {
+      login,
+      firstname: "Test",
+      lastname: login,
+      mail: `${login}@example.com`,
+      password: "Password123!",
+      ...user,
+    },
   });
   return created;
 }
@@ -54,11 +61,7 @@ export async function createVersion(client: RedmineClient, projectId: number, ve
   return created;
 }
 
-export async function createIssueCategory(
-  client: RedmineClient,
-  projectId: number,
-  issueCategory: Partial<CreateIssueCategory> = {},
-) {
+export async function createIssueCategory(client: RedmineClient, projectId: number, issueCategory: Partial<CreateIssueCategory> = {}) {
   const { issueCategory: created } = await client.issueCategoriesClient.createIssueCategory(projectId, {
     issueCategory: { name: unique("category"), ...issueCategory },
   });
@@ -118,12 +121,7 @@ export async function createNews(client: RedmineClient, projectId: number, news:
 }
 
 /** Creates a wiki page in a project */
-export async function createWikiPage(
-  client: RedmineClient,
-  projectId: number,
-  title = unique("Page"),
-  page: Partial<UpdateWikiPage> = {},
-) {
+export async function createWikiPage(client: RedmineClient, projectId: number, title = unique("Page"), page: Partial<UpdateWikiPage> = {}) {
   const created = await client.wikiPagesClient.updateWikiPage(projectId, title, {
     wikiPage: { text: `Text of ${title}`, ...page },
   });

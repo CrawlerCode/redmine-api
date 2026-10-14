@@ -134,5 +134,8 @@ model WikiPage {
  */
 model UpdateWikiPage {
   ...OmitProperties<Update<WikiPage>, "comments" | "version">;
-  ...OptionalProperties<PickProperties<Update<WikiPage>, "comments" | "version">>;
+  ...OptionalProperties<PickProperties<
+    Update<WikiPage>,
+    "comments" | "version"
+  >>;
 }

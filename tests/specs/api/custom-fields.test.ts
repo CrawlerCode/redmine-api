@@ -20,9 +20,12 @@ describe("Custom Fields API", () => {
       });
       // Redmine < 3.3 omits false values
       expect(customFields.find((cf) => cf.id === inject("customFieldId"))?.multiple ?? false).toBe(false);
-      expect(customFields.find((cf) => cf.id === inject("customFieldId"))?.trackers?.map((t) => t.id).sort()).toEqual(
-        trackers.map((t) => t.id).sort(),
-      );
+      expect(
+        customFields
+          .find((cf) => cf.id === inject("customFieldId"))
+          ?.trackers?.map((t) => t.id)
+          .sort(),
+      ).toEqual(trackers.map((t) => t.id).sort());
     });
 
     it("includes the possible values of list fields", async () => {

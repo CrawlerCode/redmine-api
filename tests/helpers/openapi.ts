@@ -25,8 +25,7 @@ export function specVersionFor(serverVersion: string) {
 }
 
 /** Encodes a JSON pointer for use in a `$ref` URI fragment */
-const toRef = (pointer: string[]) =>
-  "openapi#/" + pointer.map((p) => encodeURIComponent(p.replaceAll("~", "~0").replaceAll("/", "~1"))).join("/");
+const toRef = (pointer: string[]) => "openapi#/" + pointer.map((p) => encodeURIComponent(p.replaceAll("~", "~0").replaceAll("/", "~1"))).join("/");
 
 export class OpenApiValidator {
   private readonly doc: JsonSchema;

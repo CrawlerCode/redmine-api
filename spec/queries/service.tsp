@@ -30,7 +30,13 @@ namespace Redmine.SavedQueries {
      */
     @query
     @Versioning.added(RedmineServerVersion.`3.4.0`)
-    type?: "IssueQuery" | "TimeEntryQuery" | "ProjectQuery" | "UserQuery" | "ProjectAdminQuery" | string,
+    type?:
+      | "IssueQuery"
+      | "TimeEntryQuery"
+      | "ProjectQuery"
+      | "UserQuery"
+      | "ProjectAdminQuery"
+      | string,
 
     ...Pagination,
   ):

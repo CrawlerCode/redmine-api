@@ -39,22 +39,14 @@ describe("Issue Categories API", () => {
     });
 
     it("returns 404 for an unknown issue category", async () => {
-      await expectHttpError(
-        client.issueCategoriesClient.getIssueCategory(999_999),
-        404,
-        "IssueCategories_getIssueCategory",
-      );
+      await expectHttpError(client.issueCategoriesClient.getIssueCategory(999_999), 404, "IssueCategories_getIssueCategory");
     });
   });
 
   describeOperation("IssueCategories_createIssueCategory", () => {
     it("creates an issue category", async () => {
       const v = withResponse("IssueCategories_createIssueCategory");
-      const { issueCategory } = await client.issueCategoriesClient.createIssueCategory(
-        project.id,
-        { issueCategory: { name: "Backend" } },
-        v.options,
-      );
+      const { issueCategory } = await client.issueCategoriesClient.createIssueCategory(project.id, { issueCategory: { name: "Backend" } }, v.options);
       v.expectValid();
       expect(issueCategory.name).toBe("Backend");
     });
@@ -97,7 +89,10 @@ describe("Issue Categories API", () => {
       const issue = await createIssue(client, project.id, { categoryId: category.id });
 
       const v = withResponse("IssueCategories_deleteIssueCategory");
-      await client.issueCategoriesClient.deleteIssueCategory(category.id, { reassignToId: replacement.id, ...v.options });
+      await client.issueCategoriesClient.deleteIssueCategory(category.id, {
+        reassignToId: replacement.id,
+        ...v.options,
+      });
       v.expectValid();
 
       const { issue: fetched } = await client.issuesClient.getIssue(issue.id);

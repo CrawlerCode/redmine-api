@@ -69,11 +69,7 @@ describe("Attachments API", () => {
       const attachment = await createAttachment(client, project.id);
 
       const v = withResponse("Attachments_updateAttachment");
-      await client.attachmentsClient.updateAttachment(
-        attachment.id,
-        { attachment: { filename: "renamed.txt", description: "Renamed" } },
-        v.options,
-      );
+      await client.attachmentsClient.updateAttachment(attachment.id, { attachment: { filename: "renamed.txt", description: "Renamed" } }, v.options);
       v.expectValid();
 
       const { attachment: fetched } = await client.attachmentsClient.getAttachment(attachment.id);

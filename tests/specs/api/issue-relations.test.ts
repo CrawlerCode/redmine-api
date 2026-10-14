@@ -49,11 +49,7 @@ describe("Issue Relations API", () => {
     });
 
     it("returns 404 for an unknown relation", async () => {
-      await expectHttpError(
-        client.issueRelationsClient.getIssueRelation(999_999),
-        404,
-        "IssueRelations_getIssueRelation",
-      );
+      await expectHttpError(client.issueRelationsClient.getIssueRelation(999_999), 404, "IssueRelations_getIssueRelation");
     });
   });
 

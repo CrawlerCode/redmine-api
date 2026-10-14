@@ -56,11 +56,7 @@ describe("Versions API", () => {
     });
 
     it("returns 422 for an invalid version", async () => {
-      await expectHttpError(
-        client.versionsClient.createVersion(project.id, { version: { name: "" } }),
-        422,
-        "Versions_createVersion",
-      );
+      await expectHttpError(client.versionsClient.createVersion(project.id, { version: { name: "" } }), 422, "Versions_createVersion");
     });
   });
 

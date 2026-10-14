@@ -108,10 +108,7 @@ enum VersionSharing {
  * Version create payload. `description`, `status` (default `open`) and `sharing` (default `none`) are optional on create.
  */
 model CreateVersion {
-  ...OmitProperties<
-    Create<Version>,
-    "description" | "status" | "sharing"
-  >;
+  ...OmitProperties<Create<Version>, "description" | "status" | "sharing">;
   ...OptionalProperties<PickProperties<
     Create<Version>,
     "description" | "status" | "sharing"

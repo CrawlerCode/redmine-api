@@ -4,13 +4,13 @@ A [TypeSpec](https://typespec.io) specification of the [Redmine REST API](https:
 
 ## Repository layout
 
-| Folder | Content |
-| --- | --- |
-| [`spec/`](spec) | The TypeSpec spec. One folder per API resource (`models.tsp`, `dtos.tsp`, `queries.tsp`, `service.tsp`), shared models in `shared/`, Redmine releases in `server-versions.tsp`. |
-| [`schema/openapi/`](schema/openapi) | Generated OpenAPI 3.1 documents, one per Redmine version (`openapi.<version>.yaml`). |
-| `spec/tsp-output/clients/js/` | Generated TypeScript client (`redmine-api-client`), a workspace package. |
-| [`tests/`](tests) | Integration tests against Redmine in Docker. |
-| [`dev/`](dev) | Scratch script for trying the client against your own Redmine. |
+| Folder                              | Content                                                                                                                                                                         |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`spec/`](spec)                     | The TypeSpec spec. One folder per API resource (`models.tsp`, `dtos.tsp`, `queries.tsp`, `service.tsp`), shared models in `shared/`, Redmine releases in `server-versions.tsp`. |
+| [`schema/openapi/`](schema/openapi) | Generated OpenAPI 3.1 documents, one per Redmine version (`openapi.<version>.yaml`).                                                                                            |
+| `spec/tsp-output/clients/js/`       | Generated TypeScript client (`redmine-api-client`), a workspace package.                                                                                                        |
+| [`tests/`](tests)                   | Integration tests against Redmine in Docker.                                                                                                                                    |
+| [`dev/`](dev)                       | Scratch script for trying the client against your own Redmine.                                                                                                                  |
 
 ## Getting started
 
@@ -34,9 +34,13 @@ The version a feature was added in is taken from the Redmine source (`app/views/
 ```ts
 import { IssueQueryInclude, RedmineClient } from "redmine-api-client";
 
-const client = new RedmineClient("https://redmine.example.com", { key: process.env.REDMINE_API_KEY! });
+const client = new RedmineClient("https://redmine.example.com", {
+  key: process.env.REDMINE_API_KEY!,
+});
 
-const { issue } = await client.issuesClient.getIssue(42, { include: [IssueQueryInclude.Journals] });
+const { issue } = await client.issuesClient.getIssue(42, {
+  include: [IssueQueryInclude.Journals],
+});
 ```
 
 The client is generated from the newest version of the spec. Properties use camelCase (`issue.createdOn`), the client converts them from and to the snake_case of the API.
@@ -75,10 +79,10 @@ Redmine 3.0 can't be tested: its images use a manifest format that current Docke
 
 ### Options
 
-| Variable | Effect |
-| --- | --- |
-| `REDMINE_IMAGE` | Docker image to test, defaults to `redmine:7` |
-| `REDMINE_PORT` | Fixed host port instead of a free one |
+| Variable         | Effect                                                           |
+| ---------------- | ---------------------------------------------------------------- |
+| `REDMINE_IMAGE`  | Docker image to test, defaults to `redmine:7`                    |
+| `REDMINE_PORT`   | Fixed host port instead of a free one                            |
 | `KEEP_REDMINE=1` | Keep the container after the tests, and reuse it on the next run |
 
 ### Writing tests

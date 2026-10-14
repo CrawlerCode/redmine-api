@@ -1,13 +1,6 @@
 import { type Project, type WikiPageListItem, WikiPageQueryInclude } from "redmine-api-client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import {
-  createAdminClient,
-  createTestClient,
-  describeOperation,
-  expectHttpError,
-  spec,
-  withResponse,
-} from "../../helpers/client.ts";
+import { createAdminClient, createTestClient, describeOperation, expectHttpError, spec, withResponse } from "../../helpers/client.ts";
 import { createProject, createWikiPage, unique } from "../../helpers/fixtures.ts";
 
 const client = createTestClient();
@@ -37,11 +30,7 @@ describe("Wiki Pages API", () => {
     });
 
     it("returns 404 for an unknown project", async () => {
-      await expectHttpError(
-        client.wikiPagesClient.getProjectWikiPages("does-not-exist"),
-        404,
-        "WikiPages_getProjectWikiPages",
-      );
+      await expectHttpError(client.wikiPagesClient.getProjectWikiPages("does-not-exist"), 404, "WikiPages_getProjectWikiPages");
     });
   });
 
@@ -78,11 +67,7 @@ describe("Wiki Pages API", () => {
     });
 
     it("returns 404 for an unknown page", async () => {
-      await expectHttpError(
-        client.wikiPagesClient.getWikiPage(project.id, "Does_not_exist"),
-        404,
-        "WikiPages_getWikiPage",
-      );
+      await expectHttpError(client.wikiPagesClient.getWikiPage(project.id, "Does_not_exist"), 404, "WikiPages_getWikiPage");
     });
   });
 
@@ -99,11 +84,7 @@ describe("Wiki Pages API", () => {
 
     it.skipIf(!spec.isAtLeast("4.1.0"))("returns 404 for an unknown version", async () => {
       const page = await createWikiPage(client, project.id);
-      await expectHttpError(
-        client.wikiPagesClient.getWikiPageVersion(project.id, page.title, 99),
-        404,
-        "WikiPages_getWikiPageVersion",
-      );
+      await expectHttpError(client.wikiPagesClient.getWikiPageVersion(project.id, page.title, 99), 404, "WikiPages_getWikiPageVersion");
     });
 
     it.skipIf(spec.isAtLeast("4.1.0"))("returns the current version for an unknown version before Redmine 4.1", async () => {
@@ -121,12 +102,7 @@ describe("Wiki Pages API", () => {
       const title = unique("Page");
 
       const v = withResponse("WikiPages_updateWikiPage");
-      const created = await client.wikiPagesClient.updateWikiPage(
-        project.id,
-        title,
-        { wikiPage: { text: "Text", comments: "Created" } },
-        v.options,
-      );
+      const created = await client.wikiPagesClient.updateWikiPage(project.id, title, { wikiPage: { text: "Text", comments: "Created" } }, v.options);
       v.expectValid();
       expect(created?.wikiPage).toMatchObject({ title, text: "Text", version: 1, comments: "Created" });
     });
@@ -181,11 +157,7 @@ describe("Wiki Pages API", () => {
     });
 
     it("returns 404 for an unknown page", async () => {
-      await expectHttpError(
-        client.wikiPagesClient.deleteWikiPage(project.id, "Does_not_exist"),
-        404,
-        "WikiPages_deleteWikiPage",
-      );
+      await expectHttpError(client.wikiPagesClient.deleteWikiPage(project.id, "Does_not_exist"), 404, "WikiPages_deleteWikiPage");
     });
   });
 });

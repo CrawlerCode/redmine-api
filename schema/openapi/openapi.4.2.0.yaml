@@ -38,17 +38,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
-            '*/*':
+            "*/*":
               schema:
-                contentMediaType: '*/*'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                contentMediaType: "*/*"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Attachments
@@ -66,17 +66,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
-            '*/*':
+            "*/*":
               schema:
-                contentMediaType: '*/*'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                contentMediaType: "*/*"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Attachments
@@ -99,17 +99,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
-            '*/*':
+            "*/*":
               schema:
-                contentMediaType: '*/*'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                contentMediaType: "*/*"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Attachments
@@ -125,17 +125,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Attachments.DTOs.AttachmentDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Attachments.DTOs.AttachmentDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Attachments
@@ -150,22 +150,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Attachments
       requestBody:
@@ -173,7 +173,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Attachments.DTOs.UpdateAttachmentDto'
+              $ref: "#/components/schemas/Attachments.DTOs.UpdateAttachmentDto"
     delete:
       operationId: Attachments_deleteAttachment
       description: Delete an attachment
@@ -185,15 +185,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Attachments
@@ -203,15 +203,15 @@ paths:
       description: Get all custom field definitions. Requires admin privileges.
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomFields.DTOs.CustomFieldsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/CustomFields.DTOs.CustomFieldsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Custom Fields
@@ -221,15 +221,15 @@ paths:
       description: Get the list of document categories
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Enumerations.DTOs.DocumentCategoriesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Enumerations.DTOs.DocumentCategoriesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Enumerations
@@ -239,15 +239,15 @@ paths:
       description: Get the list of issue priorities
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Enumerations.DTOs.IssuePrioritiesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Enumerations.DTOs.IssuePrioritiesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Enumerations
@@ -257,15 +257,15 @@ paths:
       description: Get the list of time entry activities
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Enumerations.DTOs.TimeEntryActivitiesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Enumerations.DTOs.TimeEntryActivitiesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Enumerations
@@ -274,17 +274,17 @@ paths:
       operationId: Groups_getGroups
       description: Get the list of groups
       parameters:
-        - $ref: '#/components/parameters/Groups.Queries.GetGroupsQuery'
+        - $ref: "#/components/parameters/Groups.Queries.GetGroupsQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Groups.DTOs.GroupsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Groups.DTOs.GroupsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Groups
@@ -293,22 +293,22 @@ paths:
       description: Create a new group
       parameters: []
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Groups.DTOs.GroupDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Groups.DTOs.GroupDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Groups
       requestBody:
@@ -316,7 +316,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Groups.DTOs.CreateGroupDto'
+              $ref: "#/components/schemas/Groups.DTOs.CreateGroupDto"
   /groups/{id}.json:
     get:
       operationId: Groups_getGroup
@@ -328,19 +328,19 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/Groups.Queries.GetGroupQuery'
+        - $ref: "#/components/parameters/Groups.Queries.GetGroupQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Groups.DTOs.GroupDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Groups.DTOs.GroupDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Groups
@@ -355,22 +355,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Groups
       requestBody:
@@ -378,7 +378,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Groups.DTOs.UpdateGroupDto'
+              $ref: "#/components/schemas/Groups.DTOs.UpdateGroupDto"
     delete:
       operationId: Groups_deleteGroup
       description: Delete a group
@@ -390,15 +390,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Groups
@@ -414,22 +414,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Groups
       requestBody:
@@ -437,7 +437,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Groups.DTOs.AddGroupUserDto'
+              $ref: "#/components/schemas/Groups.DTOs.AddGroupUserDto"
   /groups/{id}/users/{user_id}.json:
     delete:
       operationId: Groups_removeGroupUser
@@ -456,15 +456,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Groups
@@ -480,17 +480,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueCategories.DTOs.IssueCategoryDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueCategories.DTOs.IssueCategoryDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issue Categories
@@ -505,22 +505,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issue Categories
       requestBody:
@@ -528,7 +528,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/IssueCategories.DTOs.UpdateIssueCategoryDto'
+              $ref: "#/components/schemas/IssueCategories.DTOs.UpdateIssueCategoryDto"
     delete:
       operationId: IssueCategories_deleteIssueCategory
       description: Delete an issue category
@@ -548,15 +548,15 @@ paths:
             format: int64
           explode: false
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issue Categories
@@ -566,15 +566,15 @@ paths:
       description: Get the list of all issue statuses
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueStatuses.DTOs.IssueStatusesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueStatuses.DTOs.IssueStatusesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Issue Statuses
@@ -587,38 +587,38 @@ paths:
         Filters on dates and other fields accept operators (e.g. `>=2014-01-02T08:12:32Z`, `><2012-03-01|2012-03-07`, `~foo`).
         Custom fields marked as "used as a filter" can be filtered with `cf_x` (where `x` is the custom field ID).
       parameters:
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.include'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.issue_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.project_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.subproject_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.tracker_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.status_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.assigned_to_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.author_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.priority_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.category_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.fixed_version_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.parent_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.subject'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.created_on'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.updated_on'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.closed_on'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.start_date'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.due_date'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.query_id'
-        - $ref: '#/components/parameters/Issues.Queries.GetIssuesQuery.sort'
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.include"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.issue_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.project_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.subproject_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.tracker_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.status_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.assigned_to_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.author_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.priority_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.category_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.fixed_version_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.parent_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.subject"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.created_on"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.updated_on"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.closed_on"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.start_date"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.due_date"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.query_id"
+        - $ref: "#/components/parameters/Issues.Queries.GetIssuesQuery.sort"
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Issues.DTOs.PaginatedIssuesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Issues.DTOs.PaginatedIssuesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Issues
@@ -627,22 +627,22 @@ paths:
       description: Create a new issue
       parameters: []
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Issues.DTOs.IssueDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Issues.DTOs.IssueDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issues
       requestBody:
@@ -650,7 +650,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Issues.DTOs.CreateIssueDto'
+              $ref: "#/components/schemas/Issues.DTOs.CreateIssueDto"
   /issues/{id}.json:
     get:
       operationId: Issues_getIssue
@@ -662,19 +662,19 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/Issues.Queries.GetIssueQuery'
+        - $ref: "#/components/parameters/Issues.Queries.GetIssueQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Issues.DTOs.IssueDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Issues.DTOs.IssueDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issues
@@ -689,22 +689,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issues
       requestBody:
@@ -712,7 +712,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Issues.DTOs.UpdateIssueDto'
+              $ref: "#/components/schemas/Issues.DTOs.UpdateIssueDto"
     delete:
       operationId: Issues_deleteIssue
       description: Delete an issue
@@ -724,15 +724,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issues
@@ -748,22 +748,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issues
       requestBody:
@@ -771,7 +771,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Issues.DTOs.AddWatcherDto'
+              $ref: "#/components/schemas/Issues.DTOs.AddWatcherDto"
   /issues/{id}/watchers/{user_id}.json:
     delete:
       operationId: Issues_removeIssueWatcher
@@ -790,15 +790,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issues
@@ -814,17 +814,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueRelations.DTOs.IssueRelationsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueRelations.DTOs.IssueRelationsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issue Relations
@@ -839,24 +839,24 @@ paths:
             type: integer
             format: int64
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueRelations.DTOs.IssueRelationDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueRelations.DTOs.IssueRelationDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issue Relations
       requestBody:
@@ -864,7 +864,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/IssueRelations.DTOs.CreateIssueRelationDto'
+              $ref: "#/components/schemas/IssueRelations.DTOs.CreateIssueRelationDto"
   /memberships/{id}.json:
     get:
       operationId: Memberships_getMembership
@@ -877,17 +877,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Memberships.DTOs.MembershipDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Memberships.DTOs.MembershipDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Memberships
@@ -902,22 +902,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Memberships
       requestBody:
@@ -925,7 +925,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Memberships.DTOs.UpdateMembershipDto'
+              $ref: "#/components/schemas/Memberships.DTOs.UpdateMembershipDto"
     delete:
       operationId: Memberships_deleteMembership
       description: Delete a membership. Memberships inherited from a group membership can not be deleted.
@@ -937,22 +937,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
-        '204':
-          description: 'There is no content to send for this request, but the headers may be useful. '
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "204":
+          description: "There is no content to send for this request, but the headers may be useful. "
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Memberships
   /my/account.json:
@@ -961,15 +961,15 @@ paths:
       description: Get the account of the current user
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MyAccount.DTOs.MyAccountDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/MyAccount.DTOs.MyAccountDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - My Account
@@ -978,20 +978,20 @@ paths:
       description: Update the account of the current user
       parameters: []
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - My Account
       requestBody:
@@ -999,24 +999,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MyAccount.DTOs.UpdateMyAccountDto'
+              $ref: "#/components/schemas/MyAccount.DTOs.UpdateMyAccountDto"
   /news.json:
     get:
       operationId: News_getNews
       description: Get the news of all visible projects
       parameters:
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/News.DTOs.PaginatedNewsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/News.DTOs.PaginatedNewsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - News
@@ -1025,22 +1025,22 @@ paths:
       description: Create a news. The project is given in the payload.
       parameters: []
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - News
       requestBody:
@@ -1048,7 +1048,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/News.DTOs.CreateNewsInProjectDto'
+              $ref: "#/components/schemas/News.DTOs.CreateNewsInProjectDto"
   /news/{id}.json:
     get:
       operationId: News_getNewsItem
@@ -1060,19 +1060,19 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/News.Queries.GetNewsItemQuery'
+        - $ref: "#/components/parameters/News.Queries.GetNewsItemQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/News.DTOs.NewsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/News.DTOs.NewsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - News
@@ -1087,22 +1087,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - News
       requestBody:
@@ -1110,7 +1110,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/News.DTOs.UpdateNewsDto'
+              $ref: "#/components/schemas/News.DTOs.UpdateNewsDto"
     delete:
       operationId: News_deleteNews
       description: Delete a news
@@ -1122,15 +1122,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - News
@@ -1139,19 +1139,19 @@ paths:
       operationId: Projects_getProjects
       description: Get a list of projects (all public projects and private projects the user has access to)
       parameters:
-        - $ref: '#/components/parameters/Projects.Queries.GetProjectsQuery.include'
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Projects.Queries.GetProjectsQuery.include"
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Projects.DTOs.PaginatedProjectsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Projects.DTOs.PaginatedProjectsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Projects
@@ -1160,22 +1160,22 @@ paths:
       description: Create a new project
       parameters: []
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Projects.DTOs.ProjectDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Projects.DTOs.ProjectDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Projects
       requestBody:
@@ -1183,7 +1183,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Projects.DTOs.CreateProjectDto'
+              $ref: "#/components/schemas/Projects.DTOs.CreateProjectDto"
   /projects/{id}.json:
     get:
       operationId: Projects_getProject
@@ -1198,19 +1198,19 @@ paths:
               - type: integer
                 format: int64
               - type: string
-        - $ref: '#/components/parameters/Projects.Queries.GetProjectQuery'
+        - $ref: "#/components/parameters/Projects.Queries.GetProjectQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Projects.DTOs.ProjectDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Projects.DTOs.ProjectDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Projects
@@ -1228,22 +1228,22 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Projects
       requestBody:
@@ -1251,7 +1251,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Projects.DTOs.UpdateProjectDto'
+              $ref: "#/components/schemas/Projects.DTOs.UpdateProjectDto"
     delete:
       operationId: Projects_deleteProject
       description: Delete a project
@@ -1266,15 +1266,15 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Projects
@@ -1300,17 +1300,17 @@ paths:
             type: string
           explode: false
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Files.DTOs.FilesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Files.DTOs.FilesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Files
@@ -1330,22 +1330,22 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Files
       requestBody:
@@ -1353,7 +1353,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Files.DTOs.CreateFileDto'
+              $ref: "#/components/schemas/Files.DTOs.CreateFileDto"
   /projects/{project_id}/issue_categories.json:
     get:
       operationId: IssueCategories_getProjectIssueCategories
@@ -1369,17 +1369,17 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueCategories.DTOs.IssueCategoriesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueCategories.DTOs.IssueCategoriesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issue Categories
@@ -1397,24 +1397,24 @@ paths:
                 format: int64
               - type: string
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueCategories.DTOs.IssueCategoryDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueCategories.DTOs.IssueCategoryDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issue Categories
       requestBody:
@@ -1422,7 +1422,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/IssueCategories.DTOs.CreateIssueCategoryDto'
+              $ref: "#/components/schemas/IssueCategories.DTOs.CreateIssueCategoryDto"
   /projects/{project_id}/memberships.json:
     get:
       operationId: Memberships_getProjectMemberships
@@ -1437,20 +1437,20 @@ paths:
               - type: integer
                 format: int64
               - type: string
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Memberships.DTOs.PaginatedMembershipsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Memberships.DTOs.PaginatedMembershipsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Memberships
@@ -1468,24 +1468,24 @@ paths:
                 format: int64
               - type: string
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Memberships.DTOs.MembershipDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Memberships.DTOs.MembershipDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Memberships
       requestBody:
@@ -1493,7 +1493,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Memberships.DTOs.CreateMembershipDto'
+              $ref: "#/components/schemas/Memberships.DTOs.CreateMembershipDto"
   /projects/{project_id}/news.json:
     get:
       operationId: News_getProjectNews
@@ -1508,20 +1508,20 @@ paths:
               - type: integer
                 format: int64
               - type: string
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/News.DTOs.PaginatedNewsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/News.DTOs.PaginatedNewsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - News
@@ -1539,22 +1539,22 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - News
       requestBody:
@@ -1562,7 +1562,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/News.DTOs.CreateNewsDto'
+              $ref: "#/components/schemas/News.DTOs.CreateNewsDto"
   /projects/{project_id}/search.json:
     get:
       operationId: Search_searchProject
@@ -1577,33 +1577,33 @@ paths:
               - type: integer
                 format: int64
               - type: string
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.q'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.scope'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.all_words'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.titles_only'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.open_issues'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.attachments'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.issues'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.news'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.documents'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.changesets'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.wiki_pages'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.messages'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.projects'
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.q"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.scope"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.all_words"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.titles_only"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.open_issues"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.attachments"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.issues"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.news"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.documents"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.changesets"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.wiki_pages"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.messages"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.projects"
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Search.DTOs.PaginatedSearchResultsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Search.DTOs.PaginatedSearchResultsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Search
@@ -1622,17 +1622,17 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Versions.DTOs.VersionsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Versions.DTOs.VersionsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Versions
@@ -1650,24 +1650,24 @@ paths:
                 format: int64
               - type: string
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Versions.DTOs.VersionDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Versions.DTOs.VersionDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Versions
       requestBody:
@@ -1675,7 +1675,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Versions.DTOs.CreateVersionDto'
+              $ref: "#/components/schemas/Versions.DTOs.CreateVersionDto"
   /projects/{project_id}/wiki/index.json:
     get:
       operationId: WikiPages_getProjectWikiPages
@@ -1691,17 +1691,17 @@ paths:
                 format: int64
               - type: string
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WikiPages.DTOs.WikiPagesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/WikiPages.DTOs.WikiPagesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Wiki Pages
@@ -1725,19 +1725,19 @@ paths:
           description: Page title
           schema:
             type: string
-        - $ref: '#/components/parameters/WikiPages.Queries.GetWikiPageQuery'
+        - $ref: "#/components/parameters/WikiPages.Queries.GetWikiPageQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WikiPages.DTOs.WikiPageDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/WikiPages.DTOs.WikiPageDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Wiki Pages
@@ -1761,30 +1761,30 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WikiPages.DTOs.WikiPageDto'
-        '204':
+                $ref: "#/components/schemas/WikiPages.DTOs.WikiPageDto"
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '409':
+        "409":
           description: The resource was changed in the meantime (e.g. a wiki page updated with an outdated `version`)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Wiki Pages
       requestBody:
@@ -1792,7 +1792,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WikiPages.DTOs.UpdateWikiPageDto'
+              $ref: "#/components/schemas/WikiPages.DTOs.UpdateWikiPageDto"
     delete:
       operationId: WikiPages_deleteWikiPage
       description: Delete a wiki page, with all its versions and attachments
@@ -1813,15 +1813,15 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Wiki Pages
@@ -1854,19 +1854,19 @@ paths:
           schema:
             type: integer
             format: int64
-        - $ref: '#/components/parameters/WikiPages.Queries.GetWikiPageQuery'
+        - $ref: "#/components/parameters/WikiPages.Queries.GetWikiPageQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WikiPages.DTOs.WikiPageDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/WikiPages.DTOs.WikiPageDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Wiki Pages
@@ -1892,18 +1892,18 @@ paths:
                   - ProjectAdminQuery
               - type: string
           explode: false
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SavedQueries.DTOs.PaginatedQueriesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/SavedQueries.DTOs.PaginatedQueriesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Queries
@@ -1919,17 +1919,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IssueRelations.DTOs.IssueRelationDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/IssueRelations.DTOs.IssueRelationDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Issue Relations
@@ -1944,22 +1944,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Issue Relations
   /roles.json:
@@ -1968,15 +1968,15 @@ paths:
       description: Get the list of roles
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Roles.DTOs.RolesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Roles.DTOs.RolesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Roles
@@ -1992,17 +1992,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Roles.DTOs.RoleDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Roles.DTOs.RoleDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Roles
@@ -2011,31 +2011,31 @@ paths:
       operationId: Search_search
       description: Search across all projects
       parameters:
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.q'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.scope'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.all_words'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.titles_only'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.open_issues'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.attachments'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.issues'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.news'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.documents'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.changesets'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.wiki_pages'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.messages'
-        - $ref: '#/components/parameters/Search.Queries.SearchQuery.projects'
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.q"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.scope"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.all_words"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.titles_only"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.open_issues"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.attachments"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.issues"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.news"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.documents"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.changesets"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.wiki_pages"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.messages"
+        - $ref: "#/components/parameters/Search.Queries.SearchQuery.projects"
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Search.DTOs.PaginatedSearchResultsDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Search.DTOs.PaginatedSearchResultsDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Search
@@ -2044,26 +2044,26 @@ paths:
       operationId: TimeEntries_getTimeEntries
       description: Get a list of time entries
       parameters:
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.project_id'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.issue_id'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.user_id'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.activity_id'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.spent_on'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.from'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.to'
-        - $ref: '#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.sort'
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.project_id"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.issue_id"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.user_id"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.activity_id"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.spent_on"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.from"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.to"
+        - $ref: "#/components/parameters/TimeEntries.Queries.GetTimeEntriesQuery.sort"
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TimeEntries.DTOs.PaginatedTimeEntriesDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/TimeEntries.DTOs.PaginatedTimeEntriesDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Time Entries
@@ -2072,22 +2072,22 @@ paths:
       description: Create a new time entry
       parameters: []
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TimeEntries.DTOs.TimeEntryDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/TimeEntries.DTOs.TimeEntryDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Time Entries
       requestBody:
@@ -2095,7 +2095,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TimeEntries.DTOs.CreateTimeEntryDto'
+              $ref: "#/components/schemas/TimeEntries.DTOs.CreateTimeEntryDto"
   /time_entries/{id}.json:
     get:
       operationId: TimeEntries_getTimeEntry
@@ -2108,17 +2108,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TimeEntries.DTOs.TimeEntryDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/TimeEntries.DTOs.TimeEntryDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Time Entries
@@ -2133,22 +2133,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Time Entries
       requestBody:
@@ -2156,7 +2156,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TimeEntries.DTOs.UpdateTimeEntryDto'
+              $ref: "#/components/schemas/TimeEntries.DTOs.UpdateTimeEntryDto"
     delete:
       operationId: TimeEntries_deleteTimeEntry
       description: Delete a time entry
@@ -2168,15 +2168,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Time Entries
@@ -2186,15 +2186,15 @@ paths:
       description: Get the list of all trackers
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Trackers.DTOs.TrackersDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Trackers.DTOs.TrackersDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Trackers
@@ -2211,22 +2211,22 @@ paths:
             type: string
           explode: false
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Attachments.DTOs.UploadedFileDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Attachments.DTOs.UploadedFileDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Attachments
       requestBody:
@@ -2241,21 +2241,21 @@ paths:
       operationId: Users_getUsers
       description: Get a list of users (requires admin privileges)
       parameters:
-        - $ref: '#/components/parameters/Users.Queries.GetUsersQuery.status'
-        - $ref: '#/components/parameters/Users.Queries.GetUsersQuery.name'
-        - $ref: '#/components/parameters/Users.Queries.GetUsersQuery.group_id'
-        - $ref: '#/components/parameters/Pagination.offset'
-        - $ref: '#/components/parameters/Pagination.limit'
+        - $ref: "#/components/parameters/Users.Queries.GetUsersQuery.status"
+        - $ref: "#/components/parameters/Users.Queries.GetUsersQuery.name"
+        - $ref: "#/components/parameters/Users.Queries.GetUsersQuery.group_id"
+        - $ref: "#/components/parameters/Pagination.offset"
+        - $ref: "#/components/parameters/Pagination.limit"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users.DTOs.PaginatedUsersDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Users.DTOs.PaginatedUsersDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
       tags:
         - Users
@@ -2264,22 +2264,22 @@ paths:
       description: Create a new user (requires admin privileges)
       parameters: []
       responses:
-        '201':
+        "201":
           description: The request has succeeded and a new resource has been created as a result.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users.DTOs.UserDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Users.DTOs.UserDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Users
       requestBody:
@@ -2287,7 +2287,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Users.DTOs.CreateUserDto'
+              $ref: "#/components/schemas/Users.DTOs.CreateUserDto"
   /users/{id}.json:
     get:
       operationId: Users_getUser
@@ -2304,19 +2304,19 @@ paths:
               - type: string
                 enum:
                   - current
-        - $ref: '#/components/parameters/Users.Queries.GetUserQuery'
+        - $ref: "#/components/parameters/Users.Queries.GetUserQuery"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users.DTOs.UserDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Users.DTOs.UserDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Users
@@ -2331,22 +2331,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Users
       requestBody:
@@ -2354,7 +2354,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Users.DTOs.UpdateUserDto'
+              $ref: "#/components/schemas/Users.DTOs.UpdateUserDto"
     delete:
       operationId: Users_deleteUser
       description: Delete a user (requires admin privileges)
@@ -2366,15 +2366,15 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Users
@@ -2390,17 +2390,17 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Versions.DTOs.VersionDto'
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+                $ref: "#/components/schemas/Versions.DTOs.VersionDto"
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
       tags:
         - Versions
@@ -2415,22 +2415,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Versions
       requestBody:
@@ -2438,7 +2438,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Versions.DTOs.UpdateVersionDto'
+              $ref: "#/components/schemas/Versions.DTOs.UpdateVersionDto"
     delete:
       operationId: Versions_deleteVersion
       description: Delete a version
@@ -2450,22 +2450,22 @@ paths:
             type: integer
             format: int64
       responses:
-        '200':
+        "200":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '204':
+        "204":
           description: Success without content. Redmine < 4.1 responds with 200 instead of 204.
-        '401':
-          description: 'Authentication required: the API key is missing or invalid, or the REST API is disabled'
-        '403':
+        "401":
+          description: "Authentication required: the API key is missing or invalid, or the REST API is disabled"
+        "403":
           description: The authenticated user is not allowed to perform this action (e.g. missing permission, or an archived project)
-        '404':
+        "404":
           description: Resource not found
-        '422':
+        "422":
           description: Validation failed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Errors.UnprocessableEntityResponse'
+                $ref: "#/components/schemas/Errors.UnprocessableEntityResponse"
       tags:
         - Versions
 security:
@@ -2480,7 +2480,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/Groups.Queries.GroupQueryInclude'
+          $ref: "#/components/schemas/Groups.Queries.GroupQueryInclude"
       explode: false
     Groups.Queries.GetGroupsQuery:
       name: builtin
@@ -2490,8 +2490,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Issues.Queries.GetIssueQuery:
       name: include
@@ -2501,7 +2501,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/Issues.Queries.IssueQueryInclude'
+          $ref: "#/components/schemas/Issues.Queries.IssueQueryInclude"
       explode: false
     Issues.Queries.GetIssuesQuery.assigned_to_id:
       name: assigned_to_id
@@ -2579,7 +2579,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/Issues.Queries.IssuesQueryInclude'
+          $ref: "#/components/schemas/Issues.Queries.IssuesQueryInclude"
       explode: false
     Issues.Queries.GetIssuesQuery.issue_id:
       name: issue_id
@@ -2657,7 +2657,7 @@ components:
             enum:
               - open
               - closed
-              - '*'
+              - "*"
       explode: false
     Issues.Queries.GetIssuesQuery.subject:
       name: subject
@@ -2678,7 +2678,7 @@ components:
             format: int64
           - type: string
             enum:
-              - '!*'
+              - "!*"
       explode: false
     Issues.Queries.GetIssuesQuery.tracker_id:
       name: tracker_id
@@ -2705,7 +2705,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/News.Queries.NewsQueryInclude'
+          $ref: "#/components/schemas/News.Queries.NewsQueryInclude"
       explode: false
     Pagination.limit:
       name: limit
@@ -2738,7 +2738,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/Projects.Queries.ProjectQueryInclude'
+          $ref: "#/components/schemas/Projects.Queries.ProjectQueryInclude"
       explode: false
     Projects.Queries.GetProjectsQuery.include:
       name: include
@@ -2748,7 +2748,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/Projects.Queries.ProjectQueryInclude'
+          $ref: "#/components/schemas/Projects.Queries.ProjectQueryInclude"
       explode: false
     Search.Queries.SearchQuery.all_words:
       name: all_words
@@ -2758,19 +2758,19 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.attachments:
       name: attachments
       in: query
       required: false
-      description: 'Search in attachments: `0` description only (default), `1` description and attachments, `only` attachments only'
+      description: "Search in attachments: `0` description only (default), `1` description and attachments, `only` attachments only"
       schema:
         type: string
         enum:
-          - '0'
-          - '1'
+          - "0"
+          - "1"
           - only
       explode: false
     Search.Queries.SearchQuery.changesets:
@@ -2781,8 +2781,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.documents:
       name: documents
@@ -2792,8 +2792,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.issues:
       name: issues
@@ -2803,8 +2803,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.messages:
       name: messages
@@ -2814,8 +2814,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.news:
       name: news
@@ -2825,8 +2825,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.open_issues:
       name: open_issues
@@ -2836,8 +2836,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.projects:
       name: projects
@@ -2847,8 +2847,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.q:
       name: q
@@ -2881,8 +2881,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     Search.Queries.SearchQuery.wiki_pages:
       name: wiki_pages
@@ -2892,8 +2892,8 @@ components:
       schema:
         type: string
         enum:
-          - '1'
-          - ''
+          - "1"
+          - ""
       explode: false
     TimeEntries.Queries.GetTimeEntriesQuery.activity_id:
       name: activity_id
@@ -2979,7 +2979,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/Users.Queries.UserQueryInclude'
+          $ref: "#/components/schemas/Users.Queries.UserQueryInclude"
       explode: false
     Users.Queries.GetUsersQuery.group_id:
       name: group_id
@@ -3002,13 +3002,13 @@ components:
       name: status
       in: query
       required: false
-      description: 'Filter by status (default: active). Use an empty value to get users of all statuses.'
+      description: "Filter by status (default: active). Use an empty value to get users of all statuses."
       schema:
         anyOf:
-          - $ref: '#/components/schemas/Users.UserStatus'
+          - $ref: "#/components/schemas/Users.UserStatus"
           - type: string
             enum:
-              - ''
+              - ""
       explode: false
     WikiPages.Queries.GetWikiPageQuery:
       name: include
@@ -3018,7 +3018,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/WikiPages.Queries.WikiPageQueryInclude'
+          $ref: "#/components/schemas/WikiPages.Queries.WikiPageQueryInclude"
       explode: false
   schemas:
     Attachments.Attachment:
@@ -3049,13 +3049,13 @@ components:
         content_type:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Content type
           readOnly: true
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Attachment description
         content_url:
           type: string
@@ -3068,7 +3068,7 @@ components:
           description: URL of the thumbnail (only for thumbnailable files)
           readOnly: true
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author reference
           readOnly: true
         created_on:
@@ -3083,21 +3083,21 @@ components:
         - attachment
       properties:
         attachment:
-          $ref: '#/components/schemas/Attachments.Attachment'
+          $ref: "#/components/schemas/Attachments.Attachment"
     Attachments.DTOs.UpdateAttachmentDto:
       type: object
       required:
         - attachment
       properties:
         attachment:
-          $ref: '#/components/schemas/Attachments.UpdateAttachment'
+          $ref: "#/components/schemas/Attachments.UpdateAttachment"
     Attachments.DTOs.UploadedFileDto:
       type: object
       required:
         - upload
       properties:
         upload:
-          $ref: '#/components/schemas/Attachments.UploadedFile'
+          $ref: "#/components/schemas/Attachments.UploadedFile"
     Attachments.UpdateAttachment:
       type: object
       properties:
@@ -3107,7 +3107,7 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Attachment description
       description: Attachment update payload. All properties are optional.
     Attachments.Upload:
@@ -3157,7 +3157,7 @@ components:
             - type: array
               items:
                 type: string
-            - type: 'null'
+            - type: "null"
           description: Custom field value. An array of values for custom fields accepting multiple values.
       description: Custom field value of an object
     CustomFieldValue:
@@ -3185,7 +3185,7 @@ components:
             - type: array
               items:
                 type: string
-            - type: 'null'
+            - type: "null"
           description: Custom field value. An array of values for custom fields accepting multiple values.
       description: Custom field value of an object
     CustomFields.CustomField:
@@ -3221,19 +3221,19 @@ components:
         regexp:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Regular expression the value must match
         min_length:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Minimum length of the value
         max_length:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Maximum length of the value
         is_required:
           type: boolean
@@ -3244,7 +3244,7 @@ components:
         searchable:
           anyOf:
             - type: boolean
-            - type: 'null'
+            - type: "null"
           description: Whether the custom field is searchable
         multiple:
           type: boolean
@@ -3252,7 +3252,7 @@ components:
         default_value:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Default value
         visible:
           type: boolean
@@ -3260,17 +3260,17 @@ components:
         possible_values:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFields.CustomFieldPossibleValue'
+            $ref: "#/components/schemas/CustomFields.CustomFieldPossibleValue"
           description: Possible values (list fields)
         trackers:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Trackers the custom field is enabled for (issue custom fields)
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: |-
             Roles the custom field is visible to (issue custom fields, since Redmine 7.0 also time entry, project and version
             custom fields)
@@ -3296,7 +3296,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFields.CustomField'
+            $ref: "#/components/schemas/CustomFields.CustomField"
     Enumerations.DTOs.DocumentCategoriesDto:
       type: object
       required:
@@ -3305,7 +3305,7 @@ components:
         document_categories:
           type: array
           items:
-            $ref: '#/components/schemas/Enumerations.Enumeration'
+            $ref: "#/components/schemas/Enumerations.Enumeration"
     Enumerations.DTOs.IssuePrioritiesDto:
       type: object
       required:
@@ -3314,7 +3314,7 @@ components:
         issue_priorities:
           type: array
           items:
-            $ref: '#/components/schemas/Enumerations.Enumeration'
+            $ref: "#/components/schemas/Enumerations.Enumeration"
     Enumerations.DTOs.TimeEntryActivitiesDto:
       type: object
       required:
@@ -3323,7 +3323,7 @@ components:
         time_entry_activities:
           type: array
           items:
-            $ref: '#/components/schemas/Enumerations.Enumeration'
+            $ref: "#/components/schemas/Enumerations.Enumeration"
     Enumerations.Enumeration:
       type: object
       required:
@@ -3348,7 +3348,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
       description: Enumeration value (issue priority, time entry activity or document category)
     Errors.UnprocessableEntityResponse:
@@ -3390,7 +3390,7 @@ components:
         - file
       properties:
         file:
-          $ref: '#/components/schemas/Files.CreateFile'
+          $ref: "#/components/schemas/Files.CreateFile"
     Files.DTOs.FilesDto:
       type: object
       required:
@@ -3399,7 +3399,7 @@ components:
         files:
           type: array
           items:
-            $ref: '#/components/schemas/Files.File'
+            $ref: "#/components/schemas/Files.File"
     Files.File:
       type: object
       required:
@@ -3430,13 +3430,13 @@ components:
         content_type:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Content type
           readOnly: true
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Attachment description
         content_url:
           type: string
@@ -3449,7 +3449,7 @@ components:
           description: URL of the thumbnail (only for thumbnailable files)
           readOnly: true
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author reference
           readOnly: true
         created_on:
@@ -3458,7 +3458,7 @@ components:
           description: Attachment creation date
           readOnly: true
         version:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Version the file belongs to
         digest:
           type: string
@@ -3479,7 +3479,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CreateCustomFieldValue'
+            $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
         user_ids:
           type: array
@@ -3503,14 +3503,14 @@ components:
         - group
       properties:
         group:
-          $ref: '#/components/schemas/Groups.CreateGroup'
+          $ref: "#/components/schemas/Groups.CreateGroup"
     Groups.DTOs.GroupDto:
       type: object
       required:
         - group
       properties:
         group:
-          $ref: '#/components/schemas/Groups.Group'
+          $ref: "#/components/schemas/Groups.Group"
     Groups.DTOs.GroupsDto:
       type: object
       required:
@@ -3519,14 +3519,14 @@ components:
         groups:
           type: array
           items:
-            $ref: '#/components/schemas/Groups.Group'
+            $ref: "#/components/schemas/Groups.Group"
     Groups.DTOs.UpdateGroupDto:
       type: object
       required:
         - group
       properties:
         group:
-          $ref: '#/components/schemas/Groups.UpdateGroup'
+          $ref: "#/components/schemas/Groups.UpdateGroup"
     Groups.Group:
       type: object
       required:
@@ -3551,18 +3551,18 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
         users:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Users of the group (`include=users`)
           readOnly: true
         memberships:
           type: array
           items:
-            $ref: '#/components/schemas/Memberships.Membership'
+            $ref: "#/components/schemas/Memberships.Membership"
           description: Project memberships of the group (`include=memberships`)
           readOnly: true
       description: Redmine Group
@@ -3581,7 +3581,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
         user_ids:
           type: array
@@ -3602,7 +3602,7 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Default assignee ID for new issues with this category
       description: Issue category create payload
     IssueCategories.DTOs.CreateIssueCategoryDto:
@@ -3611,7 +3611,7 @@ components:
         - issue_category
       properties:
         issue_category:
-          $ref: '#/components/schemas/IssueCategories.CreateIssueCategory'
+          $ref: "#/components/schemas/IssueCategories.CreateIssueCategory"
     IssueCategories.DTOs.IssueCategoriesDto:
       type: object
       required:
@@ -3621,7 +3621,7 @@ components:
         issue_categories:
           type: array
           items:
-            $ref: '#/components/schemas/IssueCategories.IssueCategory'
+            $ref: "#/components/schemas/IssueCategories.IssueCategory"
         total_count:
           type: integer
           format: int64
@@ -3632,14 +3632,14 @@ components:
         - issue_category
       properties:
         issue_category:
-          $ref: '#/components/schemas/IssueCategories.IssueCategory'
+          $ref: "#/components/schemas/IssueCategories.IssueCategory"
     IssueCategories.DTOs.UpdateIssueCategoryDto:
       type: object
       required:
         - issue_category
       properties:
         issue_category:
-          $ref: '#/components/schemas/IssueCategories.UpdateIssueCategory'
+          $ref: "#/components/schemas/IssueCategories.UpdateIssueCategory"
     IssueCategories.IssueCategory:
       type: object
       required:
@@ -3653,14 +3653,14 @@ components:
           description: Issue category ID
           readOnly: true
         project:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Project reference
           readOnly: true
         name:
           type: string
           description: Issue category name
         assigned_to:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Default assignee for new issues with this category
           readOnly: true
       description: Redmine Issue Category
@@ -3674,7 +3674,7 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Default assignee ID for new issues with this category
       description: Issue category update payload. All properties are optional.
     IssueRelations.CreateIssueRelation:
@@ -3687,13 +3687,13 @@ components:
           format: int64
           description: Target issue ID
         relation_type:
-          $ref: '#/components/schemas/IssueRelations.IssueRelationType'
+          $ref: "#/components/schemas/IssueRelations.IssueRelationType"
           description: Relation type
         delay:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Delay in days (only for `precedes` and `follows` relations)
       description: Issue relation create payload. `relation_type` defaults to `relates`.
     IssueRelations.DTOs.CreateIssueRelationDto:
@@ -3702,14 +3702,14 @@ components:
         - relation
       properties:
         relation:
-          $ref: '#/components/schemas/IssueRelations.CreateIssueRelation'
+          $ref: "#/components/schemas/IssueRelations.CreateIssueRelation"
     IssueRelations.DTOs.IssueRelationDto:
       type: object
       required:
         - relation
       properties:
         relation:
-          $ref: '#/components/schemas/IssueRelations.IssueRelation'
+          $ref: "#/components/schemas/IssueRelations.IssueRelation"
     IssueRelations.DTOs.IssueRelationsDto:
       type: object
       required:
@@ -3718,7 +3718,7 @@ components:
         relations:
           type: array
           items:
-            $ref: '#/components/schemas/IssueRelations.IssueRelation'
+            $ref: "#/components/schemas/IssueRelations.IssueRelation"
     IssueRelations.IssueRelation:
       type: object
       required:
@@ -3743,13 +3743,13 @@ components:
           format: int64
           description: Target issue ID
         relation_type:
-          $ref: '#/components/schemas/IssueRelations.IssueRelationType'
+          $ref: "#/components/schemas/IssueRelations.IssueRelationType"
           description: Relation type
         delay:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Delay in days (only for `precedes` and `follows` relations)
       description: Issue relation
     IssueRelations.IssueRelationType:
@@ -3773,7 +3773,7 @@ components:
         issue_statuses:
           type: array
           items:
-            $ref: '#/components/schemas/IssueStatuses.IssueStatus'
+            $ref: "#/components/schemas/IssueStatuses.IssueStatus"
     IssueStatuses.IssueStatus:
       type: object
       required:
@@ -3803,7 +3803,7 @@ components:
           type: string
           description: Revision identifier
         user:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Committer reference (if mapped to a Redmine user)
         comments:
           type: string
@@ -3839,13 +3839,13 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Category ID
         assigned_to_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Assigned to ID (user or group)
         subject:
           type: string
@@ -3854,31 +3854,31 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Fixed version (target version) ID
         parent_issue_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Parent issue ID
         start_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Start date
         due_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Due date
         estimated_hours:
           anyOf:
             - type: number
               format: double
-            - type: 'null'
+            - type: "null"
           description: Estimated hours
         is_private:
           type: boolean
@@ -3886,7 +3886,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CreateCustomFieldValue'
+            $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
         watcher_user_ids:
           type: array
@@ -3897,12 +3897,12 @@ components:
         uploads:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Upload'
+            $ref: "#/components/schemas/Attachments.Upload"
           description: Files to attach, uploaded beforehand via `POST /uploads.json`
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Issue description
         done_ratio:
           type: integer
@@ -3926,14 +3926,14 @@ components:
         - issue
       properties:
         issue:
-          $ref: '#/components/schemas/Issues.CreateIssue'
+          $ref: "#/components/schemas/Issues.CreateIssue"
     Issues.DTOs.IssueDto:
       type: object
       required:
         - issue
       properties:
         issue:
-          $ref: '#/components/schemas/Issues.Issue'
+          $ref: "#/components/schemas/Issues.Issue"
     Issues.DTOs.PaginatedIssuesDto:
       type: object
       required:
@@ -3945,7 +3945,7 @@ components:
         issues:
           type: array
           items:
-            $ref: '#/components/schemas/Issues.Issue'
+            $ref: "#/components/schemas/Issues.Issue"
         total_count:
           type: integer
           format: int64
@@ -3964,7 +3964,7 @@ components:
         - issue
       properties:
         issue:
-          $ref: '#/components/schemas/Issues.UpdateIssue'
+          $ref: "#/components/schemas/Issues.UpdateIssue"
     Issues.Issue:
       type: object
       required:
@@ -3986,31 +3986,31 @@ components:
           description: Issue ID
           readOnly: true
         project:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Project reference
           readOnly: true
         tracker:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Tracker reference
           readOnly: true
         status:
-          $ref: '#/components/schemas/Issues.IssueStatusReference'
+          $ref: "#/components/schemas/Issues.IssueStatusReference"
           description: Status reference
           readOnly: true
         priority:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Priority reference
           readOnly: true
         category:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Category reference
           readOnly: true
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author reference
           readOnly: true
         assigned_to:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Assigned to reference (user or group)
           readOnly: true
         subject:
@@ -4019,7 +4019,7 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Issue description
         done_ratio:
           type: integer
@@ -4028,7 +4028,7 @@ components:
           maximum: 100
           description: Done ratio
         fixed_version:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Fixed version (target version) reference
           readOnly: true
         parent:
@@ -4046,19 +4046,19 @@ components:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Start date
         due_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Due date
         estimated_hours:
           anyOf:
             - type: number
               format: double
-            - type: 'null'
+            - type: "null"
           description: Estimated hours
         spent_hours:
           type: number
@@ -4069,7 +4069,7 @@ components:
           anyOf:
             - type: number
               format: double
-            - type: 'null'
+            - type: "null"
           description: Total estimated hours (including subtasks)
           readOnly: true
         total_spent_hours:
@@ -4083,7 +4083,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
         created_on:
           type: string
@@ -4099,43 +4099,43 @@ components:
           anyOf:
             - type: string
               format: date-time
-            - type: 'null'
+            - type: "null"
           description: Issue closed date
           readOnly: true
         children:
           type: array
           items:
-            $ref: '#/components/schemas/Issues.IssueChild'
+            $ref: "#/components/schemas/Issues.IssueChild"
           description: Child issues (`include=children`)
           readOnly: true
         attachments:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Attachment'
+            $ref: "#/components/schemas/Attachments.Attachment"
           description: Attachments (`include=attachments`)
           readOnly: true
         relations:
           type: array
           items:
-            $ref: '#/components/schemas/IssueRelations.IssueRelation'
+            $ref: "#/components/schemas/IssueRelations.IssueRelation"
           description: Relations (`include=relations`)
           readOnly: true
         changesets:
           type: array
           items:
-            $ref: '#/components/schemas/Issues.Changeset'
+            $ref: "#/components/schemas/Issues.Changeset"
           description: Associated repository changesets (`include=changesets`)
           readOnly: true
         journals:
           type: array
           items:
-            $ref: '#/components/schemas/Journals.Journal'
+            $ref: "#/components/schemas/Journals.Journal"
           description: Journals (`include=journals`)
           readOnly: true
         watchers:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Watchers (`include=watchers`, only if the user is allowed to view watchers)
           readOnly: true
       description: Redmine Issue
@@ -4151,7 +4151,7 @@ components:
           format: int64
           description: Issue ID
         tracker:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Tracker reference
         subject:
           type: string
@@ -4160,7 +4160,7 @@ components:
           description: Child issues of this child
           type: array
           items:
-            $ref: '#/components/schemas/Issues.IssueChild'
+            $ref: "#/components/schemas/Issues.IssueChild"
       description: Child issue
     Issues.IssueStatusReference:
       type: object
@@ -4215,13 +4215,13 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Category ID
         assigned_to_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Assigned to ID (user or group)
         subject:
           type: string
@@ -4229,7 +4229,7 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Issue description
         done_ratio:
           type: integer
@@ -4241,31 +4241,31 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Fixed version (target version) ID
         parent_issue_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Parent issue ID
         start_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Start date
         due_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Due date
         estimated_hours:
           anyOf:
             - type: number
               format: double
-            - type: 'null'
+            - type: "null"
           description: Estimated hours
         is_private:
           type: boolean
@@ -4273,12 +4273,12 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
         uploads:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Upload'
+            $ref: "#/components/schemas/Attachments.Upload"
           description: Files to attach, uploaded beforehand via `POST /uploads.json`
         deleted_attachment_ids:
           type: array
@@ -4299,7 +4299,7 @@ components:
         - journal
       properties:
         journal:
-          $ref: '#/components/schemas/Journals.UpdateJournal'
+          $ref: "#/components/schemas/Journals.UpdateJournal"
     Journals.Journal:
       type: object
       required:
@@ -4316,13 +4316,13 @@ components:
           description: Journal ID
           readOnly: true
         user:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author reference
           readOnly: true
         notes:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Notes. Setting empty notes on a journal without details deletes the journal.
         created_on:
           type: string
@@ -4335,7 +4335,7 @@ components:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/Journals.JournalDetail'
+            $ref: "#/components/schemas/Journals.JournalDetail"
           description: Changed properties
           readOnly: true
       description: Issue journal entry (note and/or changes)
@@ -4361,12 +4361,12 @@ components:
         old_value:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Previous value
         new_value:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: New value
       description: Change of a single property in a journal entry
     Journals.UpdateJournal:
@@ -4375,7 +4375,7 @@ components:
         notes:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Notes. Setting empty notes on a journal without details deletes the journal.
         private_notes:
           type: boolean
@@ -4404,14 +4404,14 @@ components:
         - membership
       properties:
         membership:
-          $ref: '#/components/schemas/Memberships.CreateMembership'
+          $ref: "#/components/schemas/Memberships.CreateMembership"
     Memberships.DTOs.MembershipDto:
       type: object
       required:
         - membership
       properties:
         membership:
-          $ref: '#/components/schemas/Memberships.Membership'
+          $ref: "#/components/schemas/Memberships.Membership"
     Memberships.DTOs.PaginatedMembershipsDto:
       type: object
       required:
@@ -4423,7 +4423,7 @@ components:
         memberships:
           type: array
           items:
-            $ref: '#/components/schemas/Memberships.Membership'
+            $ref: "#/components/schemas/Memberships.Membership"
         total_count:
           type: integer
           format: int64
@@ -4442,7 +4442,7 @@ components:
         - membership
       properties:
         membership:
-          $ref: '#/components/schemas/Memberships.UpdateMembership'
+          $ref: "#/components/schemas/Memberships.UpdateMembership"
     Memberships.Membership:
       type: object
       required:
@@ -4456,21 +4456,21 @@ components:
           description: Membership ID
           readOnly: true
         project:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Project reference
           readOnly: true
         user:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Member user (either `user` or `group` is set)
           readOnly: true
         group:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Member group (either `user` or `group` is set)
           readOnly: true
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/Memberships.MembershipRole'
+            $ref: "#/components/schemas/Memberships.MembershipRole"
           description: Roles of the member
           readOnly: true
       description: Project membership of a user or group
@@ -4509,14 +4509,14 @@ components:
         - user
       properties:
         user:
-          $ref: '#/components/schemas/Users.User'
+          $ref: "#/components/schemas/Users.User"
     MyAccount.DTOs.UpdateMyAccountDto:
       type: object
       required:
         - user
       properties:
         user:
-          $ref: '#/components/schemas/MyAccount.UpdateMyAccount'
+          $ref: "#/components/schemas/MyAccount.UpdateMyAccount"
     MyAccount.UpdateMyAccount:
       type: object
       properties:
@@ -4530,12 +4530,12 @@ components:
           type: string
           description: Email address (hidden if the user chose to hide it, except for admins)
         mail_notification:
-          $ref: '#/components/schemas/Users.UserMailNotification'
+          $ref: "#/components/schemas/Users.UserMailNotification"
           description: Email notification setting
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
       description: Account update payload. All properties are optional.
     News.CreateNews:
@@ -4550,17 +4550,17 @@ components:
         summary:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: News summary (not included when getting a single news if blank)
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: News description
         uploads:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Upload'
+            $ref: "#/components/schemas/Attachments.Upload"
           description: Files to attach, uploaded via `uploadFile` first
       description: News create payload
     News.DTOs.CreateNewsDto:
@@ -4569,7 +4569,7 @@ components:
         - news
       properties:
         news:
-          $ref: '#/components/schemas/News.CreateNews'
+          $ref: "#/components/schemas/News.CreateNews"
     News.DTOs.CreateNewsInProjectDto:
       type: object
       required:
@@ -4583,14 +4583,14 @@ components:
             - type: string
           description: Project ID or identifier
         news:
-          $ref: '#/components/schemas/News.CreateNews'
+          $ref: "#/components/schemas/News.CreateNews"
     News.DTOs.NewsDto:
       type: object
       required:
         - news
       properties:
         news:
-          $ref: '#/components/schemas/News.News'
+          $ref: "#/components/schemas/News.News"
     News.DTOs.PaginatedNewsDto:
       type: object
       required:
@@ -4602,7 +4602,7 @@ components:
         news:
           type: array
           items:
-            $ref: '#/components/schemas/News.News'
+            $ref: "#/components/schemas/News.News"
         total_count:
           type: integer
           format: int64
@@ -4621,7 +4621,7 @@ components:
         - news
       properties:
         news:
-          $ref: '#/components/schemas/News.UpdateNews'
+          $ref: "#/components/schemas/News.UpdateNews"
     News.News:
       type: object
       required:
@@ -4636,11 +4636,11 @@ components:
           description: News ID
           readOnly: true
         project:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Project reference
           readOnly: true
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author reference
           readOnly: true
         title:
@@ -4649,12 +4649,12 @@ components:
         summary:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: News summary (not included when getting a single news if blank)
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: News description
         created_on:
           type: string
@@ -4664,13 +4664,13 @@ components:
         attachments:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Attachment'
+            $ref: "#/components/schemas/Attachments.Attachment"
           description: Attachments (`include=attachments`, only when getting a single news)
           readOnly: true
         comments:
           type: array
           items:
-            $ref: '#/components/schemas/News.NewsComment'
+            $ref: "#/components/schemas/News.NewsComment"
           description: Comments (`include=comments`, only when getting a single news)
           readOnly: true
       description: Redmine News
@@ -4685,7 +4685,7 @@ components:
           format: int64
           description: Comment ID
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author reference
         content:
           type: string
@@ -4706,17 +4706,17 @@ components:
         summary:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: News summary (not included when getting a single news if blank)
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: News description
         uploads:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Upload'
+            $ref: "#/components/schemas/Attachments.Upload"
           description: Files to attach, uploaded via `uploadFile` first
       description: News update payload. All properties are optional.
     Projects.CreateProject:
@@ -4734,30 +4734,30 @@ components:
         homepage:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Project homepage
         parent_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Parent project ID
         default_version_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Default version ID (only shared versions)
         default_assigned_to_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Default assignee ID (only for subprojects that inherit members)
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CreateCustomFieldValue'
+            $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
         custom_field_values:
           type: object
@@ -4777,7 +4777,7 @@ components:
         enabled_module_names:
           type: array
           items:
-            $ref: '#/components/schemas/Projects.ProjectModuleName'
+            $ref: "#/components/schemas/Projects.ProjectModuleName"
           description: Names of the modules to enable
         issue_custom_field_ids:
           type: array
@@ -4788,7 +4788,7 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Project description
         is_public:
           type: boolean
@@ -4803,7 +4803,7 @@ components:
         - project
       properties:
         project:
-          $ref: '#/components/schemas/Projects.CreateProject'
+          $ref: "#/components/schemas/Projects.CreateProject"
     Projects.DTOs.PaginatedProjectsDto:
       type: object
       required:
@@ -4815,7 +4815,7 @@ components:
         projects:
           type: array
           items:
-            $ref: '#/components/schemas/Projects.Project'
+            $ref: "#/components/schemas/Projects.Project"
         total_count:
           type: integer
           format: int64
@@ -4834,14 +4834,14 @@ components:
         - project
       properties:
         project:
-          $ref: '#/components/schemas/Projects.Project'
+          $ref: "#/components/schemas/Projects.Project"
     Projects.DTOs.UpdateProjectDto:
       type: object
       required:
         - project
       properties:
         project:
-          $ref: '#/components/schemas/Projects.UpdateProject'
+          $ref: "#/components/schemas/Projects.UpdateProject"
     Projects.Project:
       type: object
       required:
@@ -4869,19 +4869,19 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Project description
         homepage:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Project homepage
         parent:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Parent project reference
           readOnly: true
         status:
-          $ref: '#/components/schemas/Projects.ProjectStatus'
+          $ref: "#/components/schemas/Projects.ProjectStatus"
           description: Project status
           readOnly: true
         is_public:
@@ -4891,17 +4891,17 @@ components:
           type: boolean
           description: Whether the project inherits the members of its parent project
         default_version:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Default version reference
           readOnly: true
         default_assignee:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Default assignee reference
           readOnly: true
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
         created_on:
           type: string
@@ -4916,31 +4916,31 @@ components:
         trackers:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Trackers (`include=trackers`)
           readOnly: true
         issue_categories:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Issue categories (`include=issue_categories`)
           readOnly: true
         enabled_modules:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Enabled modules (`include=enabled_modules`)
           readOnly: true
         time_entry_activities:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Time entry activities (`include=time_entry_activities`)
           readOnly: true
         issue_custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Issue custom fields (`include=issue_custom_fields`)
           readOnly: true
       description: Redmine Project
@@ -4985,18 +4985,18 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Project description
         homepage:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Project homepage
         parent_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Parent project ID
         is_public:
           type: boolean
@@ -5008,18 +5008,18 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Default version ID (only shared versions)
         default_assigned_to_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Default assignee ID (only for subprojects that inherit members)
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
         custom_field_values:
           type: object
@@ -5039,7 +5039,7 @@ components:
         enabled_module_names:
           type: array
           items:
-            $ref: '#/components/schemas/Projects.ProjectModuleName'
+            $ref: "#/components/schemas/Projects.ProjectModuleName"
           description: Names of the modules to enable
         issue_custom_field_ids:
           type: array
@@ -5085,7 +5085,7 @@ components:
         - role
       properties:
         role:
-          $ref: '#/components/schemas/Roles.Role'
+          $ref: "#/components/schemas/Roles.Role"
     Roles.DTOs.RolesDto:
       type: object
       required:
@@ -5094,7 +5094,7 @@ components:
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
     Roles.Role:
       type: object
       required:
@@ -5138,7 +5138,7 @@ components:
         permissions:
           type: array
           items:
-            $ref: '#/components/schemas/Roles.RolePermission'
+            $ref: "#/components/schemas/Roles.RolePermission"
           description: Permissions of the role (e.g. `view_issues`, `add_issues`)
       description: Redmine Role with its permissions
     Roles.RolePermission:
@@ -5233,7 +5233,7 @@ components:
         queries:
           type: array
           items:
-            $ref: '#/components/schemas/SavedQueries.Query'
+            $ref: "#/components/schemas/SavedQueries.Query"
         total_count:
           type: integer
           format: int64
@@ -5268,7 +5268,7 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Project of the query, `null` for global queries
       description: Saved query
     Search.DTOs.PaginatedSearchResultsDto:
@@ -5282,7 +5282,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Search.SearchResult'
+            $ref: "#/components/schemas/Search.SearchResult"
         total_count:
           type: integer
           format: int64
@@ -5311,7 +5311,7 @@ components:
           description: ID of the found object
         title:
           type: string
-          description: 'Result title (e.g. `Issue #10 (Closed): Issue title`)'
+          description: "Result title (e.g. `Issue #10 (Closed): Issue title`)"
         type:
           type: string
           description: Result type (e.g. `issue`, `issue-closed`, `wiki-page`, `news`, `changeset`, `document`, `message`, `project`)
@@ -5322,7 +5322,7 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Result description
         datetime:
           type: string
@@ -5342,7 +5342,7 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Issue ID (either `project_id` or `issue_id` is required)
         user_id:
           type: integer
@@ -5359,7 +5359,7 @@ components:
         comments:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           maxLength: 255
           description: Comments (255 characters max)
         spent_on:
@@ -5369,7 +5369,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CreateCustomFieldValue'
+            $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
       description: Time entry create payload
     TimeEntries.DTOs.CreateTimeEntryDto:
@@ -5378,7 +5378,7 @@ components:
         - time_entry
       properties:
         time_entry:
-          $ref: '#/components/schemas/TimeEntries.CreateTimeEntry'
+          $ref: "#/components/schemas/TimeEntries.CreateTimeEntry"
     TimeEntries.DTOs.PaginatedTimeEntriesDto:
       type: object
       required:
@@ -5390,7 +5390,7 @@ components:
         time_entries:
           type: array
           items:
-            $ref: '#/components/schemas/TimeEntries.TimeEntry'
+            $ref: "#/components/schemas/TimeEntries.TimeEntry"
         total_count:
           type: integer
           format: int64
@@ -5409,14 +5409,14 @@ components:
         - time_entry
       properties:
         time_entry:
-          $ref: '#/components/schemas/TimeEntries.TimeEntry'
+          $ref: "#/components/schemas/TimeEntries.TimeEntry"
     TimeEntries.DTOs.UpdateTimeEntryDto:
       type: object
       required:
         - time_entry
       properties:
         time_entry:
-          $ref: '#/components/schemas/TimeEntries.UpdateTimeEntry'
+          $ref: "#/components/schemas/TimeEntries.UpdateTimeEntry"
     TimeEntries.TimeEntry:
       type: object
       required:
@@ -5434,7 +5434,7 @@ components:
           description: Time entry ID
           readOnly: true
         project:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Project reference
           readOnly: true
         issue:
@@ -5449,15 +5449,15 @@ components:
           description: Issue reference
           readOnly: true
         user:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: User who spent the time
           readOnly: true
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: User who logged the time entry
           readOnly: true
         activity:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Activity reference
           readOnly: true
         hours:
@@ -5467,7 +5467,7 @@ components:
         comments:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           maxLength: 255
           description: Comments (255 characters max)
         spent_on:
@@ -5477,7 +5477,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
         created_on:
           type: string
@@ -5501,7 +5501,7 @@ components:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Issue ID (either `project_id` or `issue_id` is required)
         user_id:
           type: integer
@@ -5518,7 +5518,7 @@ components:
         comments:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           maxLength: 255
           description: Comments (255 characters max)
         spent_on:
@@ -5528,7 +5528,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
       description: Time entry update payload. All properties are optional.
     Trackers.DTOs.TrackersDto:
@@ -5539,7 +5539,7 @@ components:
         trackers:
           type: array
           items:
-            $ref: '#/components/schemas/Trackers.Tracker'
+            $ref: "#/components/schemas/Trackers.Tracker"
     Trackers.Tracker:
       type: object
       required:
@@ -5556,12 +5556,12 @@ components:
           type: string
           description: Reference name
         default_status:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Default status for new issues
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Tracker description
       description: Redmine Tracker
     Trackers.TrackerStandardField:
@@ -5596,7 +5596,7 @@ components:
             - type: array
               items:
                 type: string
-            - type: 'null'
+            - type: "null"
           description: Custom field value. An array of values for custom fields accepting multiple values.
       description: Custom field value of an object
     Users.CreateUser:
@@ -5620,16 +5620,16 @@ components:
           type: string
           description: Last name
         status:
-          $ref: '#/components/schemas/Users.UserStatus'
+          $ref: "#/components/schemas/Users.UserStatus"
           description: User status (visible for admins only)
         auth_source_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Authentication source ID (e.g. LDAP)
         mail_notification:
-          $ref: '#/components/schemas/Users.UserMailNotification'
+          $ref: "#/components/schemas/Users.UserMailNotification"
           description: Email notification setting
         must_change_passwd:
           type: boolean
@@ -5643,7 +5643,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CreateCustomFieldValue'
+            $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
         login:
           type: string
@@ -5658,7 +5658,7 @@ components:
         - user
       properties:
         user:
-          $ref: '#/components/schemas/Users.CreateUser'
+          $ref: "#/components/schemas/Users.CreateUser"
     Users.DTOs.PaginatedUsersDto:
       type: object
       required:
@@ -5670,7 +5670,7 @@ components:
         users:
           type: array
           items:
-            $ref: '#/components/schemas/Users.User'
+            $ref: "#/components/schemas/Users.User"
         total_count:
           type: integer
           format: int64
@@ -5689,14 +5689,14 @@ components:
         - user
       properties:
         user:
-          $ref: '#/components/schemas/Users.UpdateUser'
+          $ref: "#/components/schemas/Users.UpdateUser"
     Users.DTOs.UserDto:
       type: object
       required:
         - user
       properties:
         user:
-          $ref: '#/components/schemas/Users.User'
+          $ref: "#/components/schemas/Users.User"
     Users.Queries.UserQueryInclude:
       type: string
       enum:
@@ -5725,16 +5725,16 @@ components:
           type: string
           description: Email address (hidden if the user chose to hide it, except for admins)
         status:
-          $ref: '#/components/schemas/Users.UserStatus'
+          $ref: "#/components/schemas/Users.UserStatus"
           description: User status (visible for admins only)
         auth_source_id:
           anyOf:
             - type: integer
               format: int64
-            - type: 'null'
+            - type: "null"
           description: Authentication source ID (e.g. LDAP)
         mail_notification:
-          $ref: '#/components/schemas/Users.UserMailNotification'
+          $ref: "#/components/schemas/Users.UserMailNotification"
           description: Email notification setting
         must_change_passwd:
           type: boolean
@@ -5748,7 +5748,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
       description: User update payload. All properties are optional.
     Users.User:
@@ -5780,24 +5780,24 @@ components:
           type: string
           description: Email address (hidden if the user chose to hide it, except for admins)
         status:
-          $ref: '#/components/schemas/Users.UserStatus'
+          $ref: "#/components/schemas/Users.UserStatus"
           description: User status (visible for admins only)
         api_key:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: API key (visible for admins and the user itself)
           readOnly: true
         twofa_scheme:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Two-factor authentication scheme (visible for admins only)
           readOnly: true
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
         created_on:
           type: string
@@ -5813,26 +5813,26 @@ components:
           anyOf:
             - type: string
               format: date-time
-            - type: 'null'
+            - type: "null"
           description: Last login date
           readOnly: true
         passwd_changed_on:
           anyOf:
             - type: string
               format: date-time
-            - type: 'null'
+            - type: "null"
           description: Last password change date
           readOnly: true
         groups:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: Groups of the user (`include=groups`)
           readOnly: true
         memberships:
           type: array
           items:
-            $ref: '#/components/schemas/Memberships.Membership'
+            $ref: "#/components/schemas/Memberships.Membership"
           description: Project memberships of the user (`include=memberships`)
           readOnly: true
       description: |-
@@ -5870,28 +5870,28 @@ components:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Due date
         wiki_page_title:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Title of the wiki page of this version
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CreateCustomFieldValue'
+            $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Version description
         status:
-          $ref: '#/components/schemas/Versions.VersionStatus'
+          $ref: "#/components/schemas/Versions.VersionStatus"
           description: Version status
         sharing:
-          $ref: '#/components/schemas/Versions.VersionSharing'
+          $ref: "#/components/schemas/Versions.VersionSharing"
           description: Version sharing
       description: Version create payload. `description`, `status` (default `open`) and `sharing` (default `none`) are optional on create.
     Versions.DTOs.CreateVersionDto:
@@ -5900,21 +5900,21 @@ components:
         - version
       properties:
         version:
-          $ref: '#/components/schemas/Versions.CreateVersion'
+          $ref: "#/components/schemas/Versions.CreateVersion"
     Versions.DTOs.UpdateVersionDto:
       type: object
       required:
         - version
       properties:
         version:
-          $ref: '#/components/schemas/Versions.UpdateVersion'
+          $ref: "#/components/schemas/Versions.UpdateVersion"
     Versions.DTOs.VersionDto:
       type: object
       required:
         - version
       properties:
         version:
-          $ref: '#/components/schemas/Versions.Version'
+          $ref: "#/components/schemas/Versions.Version"
     Versions.DTOs.VersionsDto:
       type: object
       required:
@@ -5924,7 +5924,7 @@ components:
         versions:
           type: array
           items:
-            $ref: '#/components/schemas/Versions.Version'
+            $ref: "#/components/schemas/Versions.Version"
         total_count:
           type: integer
           format: int64
@@ -5938,29 +5938,29 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Version description
         status:
-          $ref: '#/components/schemas/Versions.VersionStatus'
+          $ref: "#/components/schemas/Versions.VersionStatus"
           description: Version status
         due_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Due date
         sharing:
-          $ref: '#/components/schemas/Versions.VersionSharing'
+          $ref: "#/components/schemas/Versions.VersionSharing"
           description: Version sharing
         wiki_page_title:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Title of the wiki page of this version
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/UpdateCustomFieldValue'
+            $ref: "#/components/schemas/UpdateCustomFieldValue"
           description: Custom field values
       description: Version update payload. All properties are optional.
     Versions.Version:
@@ -5981,7 +5981,7 @@ components:
           description: Version ID
           readOnly: true
         project:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Project reference
           readOnly: true
         name:
@@ -5990,24 +5990,24 @@ components:
         description:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Version description
         status:
-          $ref: '#/components/schemas/Versions.VersionStatus'
+          $ref: "#/components/schemas/Versions.VersionStatus"
           description: Version status
         due_date:
           anyOf:
             - type: string
               format: date
-            - type: 'null'
+            - type: "null"
           description: Due date
         sharing:
-          $ref: '#/components/schemas/Versions.VersionSharing'
+          $ref: "#/components/schemas/Versions.VersionSharing"
           description: Version sharing
         wiki_page_title:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Title of the wiki page of this version
         estimated_hours:
           type: number
@@ -6022,7 +6022,7 @@ components:
         custom_fields:
           type: array
           items:
-            $ref: '#/components/schemas/CustomFieldValue'
+            $ref: "#/components/schemas/CustomFieldValue"
           description: Custom field values
         created_on:
           type: string
@@ -6059,14 +6059,14 @@ components:
         - wiki_page
       properties:
         wiki_page:
-          $ref: '#/components/schemas/WikiPages.UpdateWikiPage'
+          $ref: "#/components/schemas/WikiPages.UpdateWikiPage"
     WikiPages.DTOs.WikiPageDto:
       type: object
       required:
         - wiki_page
       properties:
         wiki_page:
-          $ref: '#/components/schemas/WikiPages.WikiPage'
+          $ref: "#/components/schemas/WikiPages.WikiPage"
     WikiPages.DTOs.WikiPagesDto:
       type: object
       required:
@@ -6075,7 +6075,7 @@ components:
         wiki_pages:
           type: array
           items:
-            $ref: '#/components/schemas/WikiPages.WikiPageListItem'
+            $ref: "#/components/schemas/WikiPages.WikiPageListItem"
     WikiPages.Queries.WikiPageQueryInclude:
       type: string
       enum:
@@ -6095,16 +6095,16 @@ components:
         uploads:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Upload'
+            $ref: "#/components/schemas/Attachments.Upload"
           description: Files to attach, uploaded via `uploadFile` first
         version:
           type: integer
           format: int64
-          description: 'Version of the content. When updating, the version the changes are based on: an outdated version fails with 409 Conflict.'
+          description: "Version of the content. When updating, the version the changes are based on: an outdated version fails with 409 Conflict."
         comments:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Comment of the content version
       description: Wiki page create or update payload. Only `text` is required.
     WikiPages.WikiPage:
@@ -6122,7 +6122,7 @@ components:
           description: Page title
           readOnly: true
         parent:
-          $ref: '#/components/schemas/WikiPages.WikiPageParent'
+          $ref: "#/components/schemas/WikiPages.WikiPageParent"
           description: Parent page
           readOnly: true
         text:
@@ -6131,15 +6131,15 @@ components:
         version:
           type: integer
           format: int64
-          description: 'Version of the content. When updating, the version the changes are based on: an outdated version fails with 409 Conflict.'
+          description: "Version of the content. When updating, the version the changes are based on: an outdated version fails with 409 Conflict."
         author:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: Author of the content version
           readOnly: true
         comments:
           anyOf:
             - type: string
-            - type: 'null'
+            - type: "null"
           description: Comment of the content version
         created_on:
           type: string
@@ -6154,7 +6154,7 @@ components:
         attachments:
           type: array
           items:
-            $ref: '#/components/schemas/Attachments.Attachment'
+            $ref: "#/components/schemas/Attachments.Attachment"
           description: Attachments (`include=attachments`)
           readOnly: true
       description: Wiki page with its content
@@ -6170,7 +6170,7 @@ components:
           type: string
           description: Page title
         parent:
-          $ref: '#/components/schemas/WikiPages.WikiPageParent'
+          $ref: "#/components/schemas/WikiPages.WikiPageParent"
           description: Parent page
         version:
           type: integer

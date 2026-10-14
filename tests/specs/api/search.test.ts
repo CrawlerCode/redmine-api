@@ -33,14 +33,20 @@ type SearchOptions = NonNullable<Parameters<typeof client.searchClient.search>[1
 /** `type:id` of the results, validated against the spec */
 async function search(q: string, options: SearchOptions = {}) {
   const v = withResponse("Search_search");
-  const { value } = await client.searchClient.search(q, { ...options, ...v.options }).byPage({}).next();
+  const { value } = await client.searchClient
+    .search(q, { ...options, ...v.options })
+    .byPage({})
+    .next();
   v.expectValid();
   return (value!.results as { id: number; type: string }[]).map((r) => `${r.type}:${r.id}`);
 }
 
 async function searchProject(projectId: number, q: string, options: SearchOptions = {}) {
   const v = withResponse("Search_searchProject");
-  const { value } = await client.searchClient.searchProject(projectId, q, { ...options, ...v.options }).byPage({}).next();
+  const { value } = await client.searchClient
+    .searchProject(projectId, q, { ...options, ...v.options })
+    .byPage({})
+    .next();
   v.expectValid();
   return (value!.results as { id: number; type: string }[]).map((r) => `${r.type}:${r.id}`);
 }
@@ -57,9 +63,7 @@ describe("Search API", () => {
     it("paginates with offset and limit", async () => {
       const { word } = await setup({}, {}, {}, {});
 
-      await expectPagination("Search_search", "results", (options) =>
-        client.searchClient.search(word, { issues: "1", ...options }),
-      );
+      await expectPagination("Search_search", "results", (options) => client.searchClient.search(word, { issues: "1", ...options }));
     });
 
     describe("filters", () => {
@@ -133,9 +137,7 @@ describe("Search API", () => {
 
         expect(await search(word, { issues: "1" })).toEqual([issueKey(issues[0])]);
         expect(await search(word, { projects: "1" })).toEqual([`project:${project.id}`]);
-        expect(await search(word, { issues: "1", projects: "1" })).toEqual(
-          expect.arrayContaining([issueKey(issues[0]), `project:${project.id}`]),
-        );
+        expect(await search(word, { issues: "1", projects: "1" })).toEqual(expect.arrayContaining([issueKey(issues[0]), `project:${project.id}`]));
       });
     });
   });

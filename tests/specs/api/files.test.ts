@@ -114,11 +114,7 @@ describe("Files API", () => {
 
     it("returns 404 for an unknown token", async () => {
       const project = await newProject();
-      await expectHttpError(
-        client.filesClient.createProjectFile(project.id, { file: { token: "1.unknown" } }),
-        404,
-        "Files_createProjectFile",
-      );
+      await expectHttpError(client.filesClient.createProjectFile(project.id, { file: { token: "1.unknown" } }), 404, "Files_createProjectFile");
     });
 
     it("returns 404 without token", async () => {

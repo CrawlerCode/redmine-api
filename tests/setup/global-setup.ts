@@ -28,7 +28,11 @@ declare module "vitest" {
 const cwd = fileURLToPath(new URL("..", import.meta.url));
 const image = process.env.REDMINE_IMAGE ?? "redmine:7";
 /** Compose project suffix, e.g. `redmine:7.0` → `7-0` */
-const instance = image.split(":").at(-1)!.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+const instance = image
+  .split(":")
+  .at(-1)!
+  .replace(/[^a-z0-9]+/gi, "-")
+  .toLowerCase();
 /** Keep the container running after the tests, and reuse it on the next run */
 const keep = process.env.KEEP_REDMINE === "1";
 

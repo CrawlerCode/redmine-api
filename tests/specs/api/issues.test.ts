@@ -1,20 +1,6 @@
-import {
-  type CreateIssue,
-  type Issue,
-  IssueQueryInclude,
-  IssuesQueryInclude,
-  type Project,
-  type User,
-} from "redmine-api-client";
+import { type CreateIssue, type Issue, IssueQueryInclude, IssuesQueryInclude, type Project, type User } from "redmine-api-client";
 import { afterAll, beforeAll, describe, expect, inject, it } from "vitest";
-import {
-  createAdminClient,
-  createTestClient,
-  describeOperation,
-  expectHttpError,
-  spec,
-  withResponse,
-} from "../../helpers/client.ts";
+import { createAdminClient, createTestClient, describeOperation, expectHttpError, spec, withResponse } from "../../helpers/client.ts";
 import {
   addMember,
   createAttachment,
@@ -89,9 +75,7 @@ describe("Issues API", () => {
       const { id: projectId } = await newProject();
       for (let i = 0; i < 4; i++) await createIssue(client, projectId);
 
-      await expectPagination("Issues_getIssues", "issues", (options) =>
-        client.issuesClient.getIssues({ projectId, ...options }),
-      );
+      await expectPagination("Issues_getIssues", "issues", (options) => client.issuesClient.getIssues({ projectId, ...options }));
     });
 
     describe("filters", () => {
@@ -111,9 +95,7 @@ describe("Issues API", () => {
         // Issues of subprojects are included by default
         expect(await filterIds({ projectId: parent.id })).toEqual(expect.arrayContaining([parentIssue.id, childIssue.id]));
         expect(await filterIds({ projectId: parent.id, subprojectId: "!*" })).toEqual([parentIssue.id]);
-        expect(await filterIds({ projectId: parent.id, subprojectId: child.id })).toEqual(
-          expect.arrayContaining([parentIssue.id, childIssue.id]),
-        );
+        expect(await filterIds({ projectId: parent.id, subprojectId: child.id })).toEqual(expect.arrayContaining([parentIssue.id, childIssue.id]));
       });
 
       it("tracker_id", async () => {
@@ -255,7 +237,10 @@ describe("Issues API", () => {
 
         const v = withResponse("Issues_getIssues");
         const [withInclude] = (
-          await client.issuesClient.getIssues({ projectId, include: [IssuesQueryInclude.Attachments], ...v.options }).byPage({}).next()
+          await client.issuesClient
+            .getIssues({ projectId, include: [IssuesQueryInclude.Attachments], ...v.options })
+            .byPage({})
+            .next()
         ).value!.issues;
         v.expectValid();
         expect(withInclude.attachments?.map((a: { id: number }) => a.id)).toEqual([attachment.id]);
@@ -266,11 +251,16 @@ describe("Issues API", () => {
 
       it("relations", async () => {
         const { projectId, a, b } = await createPair({});
-        const { relation } = await client.issueRelationsClient.createIssueRelation(a.id, { relation: { issueToId: b.id } });
+        const { relation } = await client.issueRelationsClient.createIssueRelation(a.id, {
+          relation: { issueToId: b.id },
+        });
 
         const v = withResponse("Issues_getIssues");
         const page = (
-          await client.issuesClient.getIssues({ projectId, include: [IssuesQueryInclude.Relations], ...v.options }).byPage({}).next()
+          await client.issuesClient
+            .getIssues({ projectId, include: [IssuesQueryInclude.Relations], ...v.options })
+            .byPage({})
+            .next()
         ).value!;
         v.expectValid();
         expect(page.issues.find((i: Issue) => i.id === a.id)?.relations?.map((r: { id: number }) => r.id)).toEqual([relation.id]);
@@ -331,7 +321,9 @@ describe("Issues API", () => {
       it("relations", async () => {
         const a = await createIssue(client, project.id);
         const b = await createIssue(client, project.id);
-        const { relation } = await client.issueRelationsClient.createIssueRelation(a.id, { relation: { issueToId: b.id } });
+        const { relation } = await client.issueRelationsClient.createIssueRelation(a.id, {
+          relation: { issueToId: b.id },
+        });
 
         const { withInclude, without } = await getWithAndWithout(a.id, IssueQueryInclude.Relations);
         expect(withInclude.relations?.map((r) => r.id)).toEqual([relation.id]);
@@ -396,11 +388,7 @@ describe("Issues API", () => {
     });
 
     it("returns 422 for an invalid issue", async () => {
-      await expectHttpError(
-        client.issuesClient.createIssue({ issue: { projectId: project.id, subject: "" } }),
-        422,
-        "Issues_createIssue",
-      );
+      await expectHttpError(client.issuesClient.createIssue({ issue: { projectId: project.id, subject: "" } }), 422, "Issues_createIssue");
     });
   });
 
@@ -417,11 +405,7 @@ describe("Issues API", () => {
     });
 
     it("returns 404 for an unknown issue", async () => {
-      await expectHttpError(
-        client.issuesClient.updateIssue(999_999, { issue: { subject: "x" } }),
-        404,
-        "Issues_updateIssue",
-      );
+      await expectHttpError(client.issuesClient.updateIssue(999_999, { issue: { subject: "x" } }), 404, "Issues_updateIssue");
     });
   });
 
@@ -448,7 +432,9 @@ describe("Issues API", () => {
       await client.issuesClient.addIssueWatcher(issue.id, { userId: user.id }, v.options);
       v.expectValid();
 
-      const { issue: fetched } = await client.issuesClient.getIssue(issue.id, { include: [IssueQueryInclude.Watchers] });
+      const { issue: fetched } = await client.issuesClient.getIssue(issue.id, {
+        include: [IssueQueryInclude.Watchers],
+      });
       expect(fetched.watchers?.map((w) => w.id)).toContain(user.id);
     });
   });
@@ -461,7 +447,9 @@ describe("Issues API", () => {
       await client.issuesClient.removeIssueWatcher(issue.id, user.id, v.options);
       v.expectValid();
 
-      const { issue: fetched } = await client.issuesClient.getIssue(issue.id, { include: [IssueQueryInclude.Watchers] });
+      const { issue: fetched } = await client.issuesClient.getIssue(issue.id, {
+        include: [IssueQueryInclude.Watchers],
+      });
       expect(fetched.watchers?.map((w) => w.id)).not.toContain(user.id);
     });
   });

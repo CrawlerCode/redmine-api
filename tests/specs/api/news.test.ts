@@ -1,13 +1,6 @@
 import { type News, NewsQueryInclude, type Project } from "redmine-api-client";
 import { afterAll, beforeAll, describe, expect, inject, it } from "vitest";
-import {
-  createAdminClient,
-  createTestClient,
-  describeOperation,
-  expectHttpError,
-  spec,
-  withResponse,
-} from "../../helpers/client.ts";
+import { createAdminClient, createTestClient, describeOperation, expectHttpError, spec, withResponse } from "../../helpers/client.ts";
 import { createNews, createProject, unique } from "../../helpers/fixtures.ts";
 import { expectPagination, pageIds } from "../../helpers/pagination.ts";
 
@@ -48,27 +41,16 @@ describe("News API", () => {
       const v = withResponse("News_getProjectNews");
       const { value } = await client.newsClient.getProjectNews(newsProjectId(), v.options).byPage({}).next();
       v.expectValid();
-      expect(value!.news.map((n: News) => n.title).sort()).toEqual([
-        "Seed news 1",
-        "Seed news 2",
-        "Seed news 3",
-        "Seed news 4",
-      ]);
+      expect(value!.news.map((n: News) => n.title).sort()).toEqual(["Seed news 1", "Seed news 2", "Seed news 3", "Seed news 4"]);
       expect(value!.news.every((n: News) => n.project?.id === newsProjectId())).toBe(true);
     });
 
     it("paginates with offset and limit", async () => {
-      await expectPagination("News_getProjectNews", "news", (options) =>
-        client.newsClient.getProjectNews(newsProjectId(), options),
-      );
+      await expectPagination("News_getProjectNews", "news", (options) => client.newsClient.getProjectNews(newsProjectId(), options));
     });
 
     it("returns 404 for an unknown project", async () => {
-      await expectHttpError(
-        client.newsClient.getProjectNews("does-not-exist").byPage({}).next(),
-        404,
-        "News_getProjectNews",
-      );
+      await expectHttpError(client.newsClient.getProjectNews("does-not-exist").byPage({}).next(), 404, "News_getProjectNews");
     });
   });
 
@@ -77,11 +59,7 @@ describe("News API", () => {
       const title = unique("news");
 
       const v = withResponse("News_createProjectNews");
-      await client.newsClient.createProjectNews(
-        project.id,
-        { news: { title, summary: "Summary", description: "Description" } },
-        v.options,
-      );
+      await client.newsClient.createProjectNews(project.id, { news: { title, summary: "Summary", description: "Description" } }, v.options);
       v.expectValid();
 
       const { value } = await client.newsClient.getProjectNews(project.id).byPage({}).next();
@@ -92,11 +70,7 @@ describe("News API", () => {
     });
 
     it("returns 422 for an invalid news", async () => {
-      await expectHttpError(
-        client.newsClient.createProjectNews(project.id, { news: { title: "", description: "" } }),
-        422,
-        "News_createProjectNews",
-      );
+      await expectHttpError(client.newsClient.createProjectNews(project.id, { news: { title: "", description: "" } }), 422, "News_createProjectNews");
     });
   });
 

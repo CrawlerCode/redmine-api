@@ -10,7 +10,10 @@ type QueriesOptions = NonNullable<Parameters<typeof client.savedQueriesClient.ge
 /** Names of the queries, validated against the spec */
 async function queryNames(options: QueriesOptions = {}) {
   const v = withResponse("SavedQueries_getQueries");
-  const { value } = await client.savedQueriesClient.getQueries({ ...options, ...v.options }).byPage({}).next();
+  const { value } = await client.savedQueriesClient
+    .getQueries({ ...options, ...v.options })
+    .byPage({})
+    .next();
   v.expectValid();
   return (value!.queries as Query[]).map((q) => q.name);
 }
@@ -33,9 +36,7 @@ describe("Queries API", () => {
     });
 
     it("paginates with offset and limit", async () => {
-      await expectPagination("SavedQueries_getQueries", "queries", (options) =>
-        client.savedQueriesClient.getQueries(options),
-      );
+      await expectPagination("SavedQueries_getQueries", "queries", (options) => client.savedQueriesClient.getQueries(options));
     });
 
     it.skipIf(!spec.isAtLeast("3.4.0"))("filters by type", async () => {
