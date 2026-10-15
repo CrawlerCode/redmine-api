@@ -1,0 +1,25 @@
+// Types of the client operations (options, page responses and page settings), which the generated client doesn't export
+export type { OperationOptions } from "../../../generated/redmine-api-client/dist/helpers/interfaces.js";
+export type { PagedAsyncIterableIterator } from "../../../generated/redmine-api-client/dist/helpers/pagingHelpers.js";
+export type * from "../../../generated/redmine-api-client/dist/api/attachmentsClient/attachmentsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/customFieldsClient/customFieldsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/enumerationsClient/enumerationsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/filesClient/filesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/groupsClient/groupsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/issueCategoriesClient/issueCategoriesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/issueRelationsClient/issueRelationsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/issueStatusesClient/issueStatusesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/issuesClient/issuesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/journalsClient/journalsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/membershipsClient/membershipsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/myAccountClient/myAccountClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/newsClient/newsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/projectsClient/projectsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/rolesClient/rolesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/savedQueriesClient/savedQueriesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/searchClient/searchClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/timeEntriesClient/timeEntriesClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/trackersClient/trackersClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/usersClient/usersClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/versionsClient/versionsClientOperations.js";
+export type * from "../../../generated/redmine-api-client/dist/api/wikiPagesClient/wikiPagesClientOperations.js";
