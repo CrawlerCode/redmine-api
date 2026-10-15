@@ -7,7 +7,9 @@
     "uri-template": "^2.0.0"
   },
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "test": "vitest run",
+    "typecheck": "tsc -p tests"
   },
   "exports": {
     ".": {
@@ -22,6 +24,7 @@
     "@types/node": "catalog:",
     "redmine-api-client-generated": "workspace:*",
     "tsdown": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

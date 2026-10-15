@@ -66,6 +66,15 @@ The global setup ([`tests/setup/global-setup.ts`](tests/setup/global-setup.ts)) 
 
 The tests run as a regular user (`tester`), which creates its own projects. An admin client is only used for admin-only endpoints (users, groups, custom fields, archiving projects), setup and cleanup.
 
+### Package tests
+
+The hand-written code in [`packages/`](packages) has unit tests (vitest) that answer requests with a fake HTTP client, so they don't need Docker. They also check the types with `tsc`.
+
+```sh
+pnpm build           # the React package tests use the built client
+pnpm test:packages
+```
+
 ### Testing other Redmine versions
 
 Each supported release series has a script in [`tests/package.json`](tests/package.json):
