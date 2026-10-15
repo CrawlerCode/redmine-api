@@ -120,3 +120,11 @@ describeOperation("Issues_getIssue", () => {
 ```
 
 Use `spec.isAtLeast("4.1.0")` for checks that depend on the Redmine version.
+
+## Releasing
+
+The root package, `spec` and the published packages in [`packages/`](packages) share one version. Bump them together:
+
+```sh
+pnpm version:bump minor   # or major, patch, or an exact version
+```

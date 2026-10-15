@@ -1,7 +1,7 @@
 {
   "name": "redmine-api-monorepo",
   "description": "Redmine API Monorepo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "CrawlerCode",
   "keywords": [],
   "license": "MIT",
@@ -15,7 +15,8 @@
     "build": "pnpm spec:compile && pnpm client:build",
     "test": "pnpm --filter tests run test",
     "test:packages": "pnpm --filter \"./packages/*\" run typecheck && pnpm --filter \"./packages/*\" run test",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "version:bump": "pnpm -r --filter . --filter spec --filter \"./packages/*\" version"
   },
   "devDependencies": {
     "@typespec/prettier-plugin-typespec": "1.17.0",
