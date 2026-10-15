@@ -1,0 +1,50 @@
+---
+title: Raw responses
+description: Read the status, headers and body of the HTTP response.
+---
+
+The methods return the deserialized body only. To read the raw HTTP response, pass `operationOptions.onResponse`. It's called with the response before the body is deserialized:
+
+```ts
+await client.issuesClient.getIssue(42, {
+  operationOptions: {
+    onResponse: (response) => {
+      console.log(response.status); // 200
+      console.log(response.headers["content-type"]); // application/json; charset=utf-8
+      console.log(response.body); // the body as Redmine sent it, with snake_case properties
+    },
+  },
+});
+```
+
+`onResponse` is also called for error responses, before the method throws.
+
+## Use cases
+
+### Logging
+
+```ts
+import type { OperationOptions } from "redmine-api-client";
+
+const logged: OperationOptions = {
+  operationOptions: {
+    onResponse: (response) => console.debug(response.request.method, response.request.url, response.status),
+  },
+};
+
+await client.projectsClient.getProject("my-project", logged);
+```
+
+### Properties the spec doesn't know
+
+Plugins can add properties to the API responses. The client only keeps the properties of the spec, but the raw body contains all of them:
+
+```ts
+let raw: { issue: Record<string, unknown> } | undefined;
+
+const { issue } = await client.issuesClient.getIssue(42, {
+  operationOptions: { onResponse: (response) => (raw = response.body as typeof raw) },
+});
+
+raw?.issue.my_plugin_field;
+```

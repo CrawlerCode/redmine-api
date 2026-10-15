@@ -1,0 +1,93 @@
+---
+title: React Query
+description: redmine-api-client-react, TanStack Query options and hooks for the Redmine client.
+---
+
+`redmine-api-client-react` provides [queries](/docs/react/queries) for [TanStack Query](https://tanstack.com/query), one module per resource, and hooks for [paged lists](/docs/react/infinite-queries).
+
+## Installation
+
+```bash
+pnpm add redmine-api-client redmine-api-client-react @tanstack/react-query
+```
+
+It works with React 18 and 19, and TanStack Query 5.
+
+## Setup
+
+<Steps>
+<Step>
+
+### Provide the client
+
+Wrap your app in a `QueryClientProvider` and a [`RedmineClientProvider`](/docs/react/provider):
+
+```tsx title="main.tsx"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RedmineClient } from "redmine-api-client";
+import { RedmineClientProvider } from "redmine-api-client-react";
+
+const queryClient = new QueryClient();
+const redmine = new RedmineClient("https://redmine.example.com", { key: apiKey });
+
+export function Root() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RedmineClientProvider client={redmine}>
+        <App />
+      </RedmineClientProvider>
+    </QueryClientProvider>
+  );
+}
+```
+
+</Step>
+<Step>
+
+### Query
+
+Get the client with `useRedmineClient()` and pass a query to `useQuery`:
+
+```tsx title="Issue.tsx"
+import { useQuery } from "@tanstack/react-query";
+import { redmineIssueQuery, useRedmineClient } from "redmine-api-client-react";
+
+export function Issue({ id }: { id: number }) {
+  const client = useRedmineClient();
+  const { data: issue, isPending } = useQuery(redmineIssueQuery(client, id));
+
+  if (isPending) return <p>Loading…</p>;
+  return <h1>{issue?.subject}</h1>;
+}
+```
+
+</Step>
+<Step>
+
+### Invalidate after changes
+
+Each resource has a filter that matches all of its queries:
+
+```tsx
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { redmineIssuesQueries, useRedmineClient } from "redmine-api-client-react";
+
+const client = useRedmineClient();
+const queryClient = useQueryClient();
+
+const closeIssue = useMutation({
+  mutationFn: (id: number) => client.issuesClient.updateIssue(id, { issue: { statusId: 5 } }),
+  onSuccess: () => queryClient.invalidateQueries(redmineIssuesQueries),
+});
+```
+
+</Step>
+</Steps>
+
+## Why queries, not hooks?
+
+The queries are plain TanStack Query options, so they work with `useQuery`, `useSuspenseQuery`, `prefetchQuery`, `ensureQueryData` and `getQueryData`, e.g. in a router loader:
+
+```ts
+await queryClient.ensureQueryData(redmineProjectQuery(client, "my-project"));
+```

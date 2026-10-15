@@ -1,0 +1,41 @@
+---
+title: Types
+description: Types for the options and results of client operations.
+---
+
+All models of the API (`Issue`, `Project`, `User`, …) and enums (`IssueQueryInclude`, …) are exported from `redmine-api-client`:
+
+```ts
+import type { Issue, Project } from "redmine-api-client";
+```
+
+## Operation types
+
+The options, page responses and page settings of each operation are exported as types as well, e.g. `GetIssuesOptions`, `GetIssuesPageResponse` and `GetIssuesPageSettings`:
+
+```ts
+import type { GetIssuesOptions } from "redmine-api-client";
+
+const openIssuesOf = (projectId: number): GetIssuesOptions => ({ projectId, statusId: "open" });
+```
+
+## `RedmineQueryOptions`
+
+The options of an operation, given by the index of its options parameter. It leaves out `operationOptions`, so the options are serializable, e.g. for a query key:
+
+```ts
+import type { RedmineClient, RedmineQueryOptions } from "redmine-api-client";
+
+type GetIssueOptions = RedmineQueryOptions<RedmineClient["issuesClient"]["getIssue"], 1>;
+// { include?: IssueQueryInclude[] }
+```
+
+## `RedmineListQueryOptions`
+
+The options of a list operation, without `offset` and `limit`, which are set per page:
+
+```ts
+import type { RedmineClient, RedmineListQueryOptions } from "redmine-api-client";
+
+type GetIssuesOptions = RedmineListQueryOptions<RedmineClient["issuesClient"]["getIssues"], 0>;
+```

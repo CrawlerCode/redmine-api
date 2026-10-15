@@ -1,0 +1,66 @@
+---
+title: Error handling
+description: Handle error responses of the Redmine API.
+---
+
+When Redmine answers with a status code that isn't a success response of the operation, the method throws a `RestError` with:
+
+| Property  | Description                                                           |
+| --------- | --------------------------------------------------------------------- |
+| `status`  | The HTTP status code                                                  |
+| `body`    | The response body, e.g. the validation errors                         |
+| `headers` | The response headers                                                  |
+| `request` | The request, with its `method` and `url`                              |
+| `message` | e.g. `Unexpected HTTP status code: 404 - HTTP 404 received for GET …` |
+
+Network errors (server not reachable, invalid certificate) are thrown as they are, without a `status`.
+
+## Status codes
+
+| Status | Meaning in Redmine                                                                        |
+| ------ | ----------------------------------------------------------------------------------------- |
+| `401`  | Missing or invalid API key, or the REST API is disabled                                   |
+| `403`  | The user isn't allowed to do this, e.g. an admin-only endpoint                            |
+| `404`  | The resource doesn't exist, or the user can't see it (e.g. an issue of a private project) |
+| `422`  | Validation failed, the messages are in `body.errors`                                      |
+
+## Checking the status
+
+`RestError` isn't exported, so check for the `status` property:
+
+```ts title="errors.ts"
+interface RedmineError extends Error {
+  status: string | number;
+  body?: { errors?: string[] };
+}
+
+export const isRedmineError = (error: unknown, status?: number): error is RedmineError =>
+  error instanceof Error && "status" in error && (status === undefined || Number(error.status) === status);
+```
+
+```ts
+try {
+  await client.issuesClient.createIssue({ issue: { projectId: 1, subject: "" } });
+} catch (error) {
+  if (isRedmineError(error, 422)) {
+    console.error(error.body?.errors); // ["Subject cannot be blank"]
+  } else {
+    throw error;
+  }
+}
+```
+
+## Not found
+
+To treat a missing resource as `undefined` instead of an error:
+
+```ts
+const findIssue = async (id: number) => {
+  try {
+    return (await client.issuesClient.getIssue(id)).issue;
+  } catch (error) {
+    if (isRedmineError(error, 404)) return undefined;
+    throw error;
+  }
+};
+```

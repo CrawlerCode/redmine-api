@@ -1,0 +1,73 @@
+---
+title: Client provider
+description: Provide the Redmine client to your components with RedmineClientProvider and useRedmineClient.
+---
+
+The queries take the `RedmineClient` as their first parameter. `RedmineClientProvider` makes one client available to all components below it, and `useRedmineClient()` returns it.
+
+## `RedmineClientProvider`
+
+Create the client once, outside of your components, and pass it to the provider:
+
+```tsx title="main.tsx"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RedmineClient } from "redmine-api-client";
+import { RedmineClientProvider } from "redmine-api-client-react";
+
+const queryClient = new QueryClient();
+const redmine = new RedmineClient("https://redmine.example.com", { key: apiKey });
+
+export function Root() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RedmineClientProvider client={redmine}>
+        <App />
+      </RedmineClientProvider>
+    </QueryClientProvider>
+  );
+}
+```
+
+| Prop       | Type            | Description                        |
+| ---------- | --------------- | ---------------------------------- |
+| `client`   | `RedmineClient` | The client to provide              |
+| `children` | `ReactNode`     | The components that use the client |
+
+## `useRedmineClient`
+
+Returns the client of the closest `RedmineClientProvider`:
+
+```tsx title="Issue.tsx"
+import { useQuery } from "@tanstack/react-query";
+import { redmineIssueQuery, useRedmineClient } from "redmine-api-client-react";
+
+export function Issue({ id }: { id: number }) {
+  const client = useRedmineClient();
+  const { data: issue } = useQuery(redmineIssueQuery(client, id));
+
+  return <h1>{issue?.subject}</h1>;
+}
+```
+
+It throws an error when it's used outside of a `RedmineClientProvider`.
+
+## A client per user
+
+In browser apps, each user usually enters their own server URL and API key. Create the client from them with `useMemo`, so it only changes when they do:
+
+```tsx title="RedmineProvider.tsx"
+import { useMemo, type ReactNode } from "react";
+import { RedmineClient } from "redmine-api-client";
+import { RedmineClientProvider } from "redmine-api-client-react";
+
+export function RedmineProvider({ url, apiKey, children }: { url: string; apiKey: string; children: ReactNode }) {
+  const client = useMemo(() => new RedmineClient(url, { key: apiKey }), [url, apiKey]);
+
+  return <RedmineClientProvider client={client}>{children}</RedmineClientProvider>;
+}
+```
+
+<Callout type="warn" title="The client isn't part of the query keys">
+  Queries of different clients share the same cache entries. When the user switches to another server or API key, clear the cache with
+  `queryClient.clear()`. If your app talks to several Redmine servers at once, use a `QueryClient` per server.
+</Callout>

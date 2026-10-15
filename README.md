@@ -2,6 +2,8 @@
 
 A [TypeSpec](https://typespec.io) specification of the [Redmine REST API](https://www.redmine.org/projects/redmine/wiki/Rest_api), versioned by Redmine release, with a generated OpenAPI description and TypeScript client. Integration tests check the spec against real Redmine servers, from 3.1 to 7.0.
 
+**Documentation:** [crawlercode.github.io/redmine-api-client](https://crawlercode.github.io/redmine-api-client/): guides, the client and React reference, and the API reference of every Redmine version.
+
 ## Repository layout
 
 | Folder                                                                    | Content                                                                                                                                                                         |
@@ -11,6 +13,7 @@ A [TypeSpec](https://typespec.io) specification of the [Redmine REST API](https:
 | [`generated/redmine-api-client/`](generated/redmine-api-client)           | Generated TypeScript client (`redmine-api-client-generated`), never edited by hand and not published.                                                                           |
 | [`packages/redmine-api-client/`](packages/redmine-api-client)             | The published TypeScript client (`redmine-api-client`): bundles the generated client and adds hand-written code.                                                                |
 | [`packages/redmine-api-client-react/`](packages/redmine-api-client-react) | TanStack Query options for React (`redmine-api-client-react`), one module per resource.                                                                                         |
+| [`docs/`](docs)                                                           | The documentation site ([Fumadocs](https://fumadocs.dev), deployed to GitHub Pages). `pnpm docs:dev` starts it locally.                                                         |
 | [`tests/`](tests)                                                         | Integration tests against Redmine in Docker.                                                                                                                                    |
 | [`dev/`](dev)                                                             | Scratch script for trying the client against your own Redmine.                                                                                                                  |
 

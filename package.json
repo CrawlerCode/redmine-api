@@ -12,6 +12,8 @@
     "spec:compile:watch": "pnpm --filter spec run compile:watch",
     "spec:compile": "pnpm --filter spec run compile",
     "client:build": "pnpm --filter \"./packages/*...\" run build",
+    "docs:dev": "pnpm --filter docs run dev",
+    "docs:build": "pnpm --filter docs run build",
     "build": "pnpm spec:compile && pnpm client:build",
     "test": "pnpm --filter tests run test",
     "test:packages": "pnpm --filter \"./packages/*\" run typecheck && pnpm --filter \"./packages/*\" run test",

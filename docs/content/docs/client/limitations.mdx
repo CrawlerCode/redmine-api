@@ -1,0 +1,16 @@
+---
+title: Known limitations
+description: What the generated client can't do yet.
+---
+
+The tests mark these cases as expected failures (`it.fails`), so they show up as soon as a fix lands.
+
+<Callout type="warn" title="Empty query parameters aren't sent">
+  Query parameters with an empty string value are left out of the request, so `all_words=""` (search for any word) and `status=""` (users of all
+  statuses) can't be used.
+</Callout>
+
+<Callout title="Attachment downloads">
+  Attachment downloads and thumbnails can't be read through the client. Use the `contentUrl` of the attachment instead, with the API key in the
+  `X-Redmine-API-Key` header.
+</Callout>

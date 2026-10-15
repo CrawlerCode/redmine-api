@@ -1,0 +1,80 @@
+---
+title: Infinite queries
+description: Paged Redmine lists with TanStack Query's infinite queries.
+---
+
+Paged lists (issues, projects, users, …) use [infinite queries](https://tanstack.com/query/latest/docs/framework/react/guides/infinite-queries). Each page is loaded with [`fetchPage`](/docs/client/pagination), and the next page is computed from the paging data Redmine returns.
+
+```tsx
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { redmineIssuesQuery, useRedmineClient } from "redmine-api-client-react";
+
+export function IssueList({ projectId }: { projectId: number }) {
+  const client = useRedmineClient();
+  const { data: issues, hasNextPage, fetchNextPage } = useInfiniteQuery(redmineIssuesQuery(client, { projectId }));
+
+  return (
+    <>
+      <ul>
+        {issues?.map((issue) => (
+          <li key={issue.id}>{issue.subject}</li>
+        ))}
+      </ul>
+      {hasNextPage && <button onClick={() => fetchNextPage()}>Load more</button>}
+    </>
+  );
+}
+```
+
+The list queries `select` the items of all loaded pages, so `data` is a flat array (`Issue[]`). To read the paging data, override `select`:
+
+```ts
+useInfiniteQuery({
+  ...redmineIssuesQuery(client),
+  select: (data) => ({
+    issues: data.pages.flatMap((page) => page.issues),
+    totalCount: data.pages[0]?.totalCount,
+  }),
+});
+```
+
+## Loading all pages
+
+`useRedminePaginatedInfiniteQuery` and `useSuspenseRedminePaginatedInfiniteQuery` work like `useInfiniteQuery` and `useSuspenseInfiniteQuery`, and add `autoFetchPages`:
+
+```tsx
+import { redmineIssuesQuery, redmineUsersQuery, useRedminePaginatedInfiniteQuery } from "redmine-api-client-react";
+
+// Load every page, one after another
+const { data: issues } = useRedminePaginatedInfiniteQuery({ ...redmineIssuesQuery(client, { projectId: 1 }), autoFetchPages: true });
+
+// Load at most 5 more pages
+const { data: users } = useRedminePaginatedInfiniteQuery({ ...redmineUsersQuery(client), autoFetchPages: 5 });
+```
+
+<AutoTypeTable path="../packages/redmine-api-client-react/src/hooks/useAutoFetchPages.ts" name="AutoFetchPagesOptions" />
+
+<Callout type="warn">
+  Redmine returns at most 100 items per page, so loading all pages of a large list sends many requests. Prefer filters, or a number for
+  `autoFetchPages`.
+</Callout>
+
+`useAutoFetchPages` is the hook behind `autoFetchPages`, for use with your own infinite queries.
+
+## Your own lists
+
+`redminePaginatedInfiniteQueryOptions` builds infinite query options for any paged operation. It sets `initialPageParam` (`{ offset: 0, limit: 100 }`) and `getNextPageParam`:
+
+```ts
+import { fetchPage, type RedmineClient } from "redmine-api-client";
+import { redminePaginatedInfiniteQueryOptions } from "redmine-api-client-react";
+
+const closedIssuesQuery = (client: RedmineClient, projectId: number) =>
+  redminePaginatedInfiniteQueryOptions({
+    queryKey: ["redmine", "issues", "closed", projectId],
+    queryFn: ({ pageParam }) => fetchPage(client.issuesClient.getIssues({ projectId, statusId: "closed" }), { ...pageParam, limit: 25 }),
+    select: (data) => data.pages.flatMap((page) => page.issues),
+  });
+```
+
+The next page follows the `limit` Redmine returns, so setting `limit` in the `queryFn` changes the page size of all pages.

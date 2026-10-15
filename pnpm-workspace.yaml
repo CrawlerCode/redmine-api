@@ -3,7 +3,11 @@ packages:
   - spec
   - tests
   - packages/*
+  - docs
   - generated/*
+
+allowBuilds:
+  esbuild: true
 
 catalog:
   "@types/node": ^24.19.2

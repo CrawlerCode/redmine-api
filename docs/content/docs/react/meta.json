@@ -1,0 +1,7 @@
+{
+  "title": "React",
+  "description": "redmine-api-client-react",
+  "icon": "Atom",
+  "root": true,
+  "pages": ["index", "provider", "queries", "infinite-queries"]
+}

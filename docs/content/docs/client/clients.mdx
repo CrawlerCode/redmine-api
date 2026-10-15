@@ -1,0 +1,133 @@
+---
+title: Clients
+description: The RedmineClient and its sub-clients, one per resource of the Redmine API.
+---
+
+`RedmineClient` takes the URL of your Redmine server and the [API key](/docs/client/authentication). It doesn't have methods itself: the endpoints are grouped into one **sub-client** per resource, e.g. `client.issuesClient` or `client.projectsClient`.
+
+```ts
+import { RedmineClient } from "redmine-api-client";
+
+const client = new RedmineClient("https://redmine.example.com", { key: process.env.REDMINE_API_KEY! });
+
+const { issue } = await client.issuesClient.getIssue(42);
+const { project } = await client.projectsClient.getProject("my-project");
+```
+
+Each sub-client matches a tag of the [API Reference](/docs/api/7.0.0/issues/get-issues), which documents the parameters and responses of each method.
+
+## How the methods work
+
+The methods follow the same patterns across all sub-clients:
+
+- **Names** follow the action and the resource: `getIssues` (list), `getIssue` (one), `createIssue`, `updateIssue`, `deleteIssue`.
+- **Path parameters** come first, as plain arguments: `getIssue(42)`, `getWikiPage("my-project", "Start")`. Projects take their ID or identifier.
+- **Request bodies** are wrapped like in the Redmine API: `createIssue({ issue: { … } })`.
+- **Options** come last, e.g. filters and `include` for associated data: `getIssue(42, { include: [IssueQueryInclude.Journals] })`.
+- **Responses** are wrapped as well: `getIssue` returns `{ issue }`, `updateIssue` and `deleteIssue` return nothing.
+- **Lists** return a pager instead of a promise, see [Pagination](/docs/client/pagination).
+- **Properties** use camelCase (`issue.createdOn`, `projectId`). The client converts them from and to the snake_case of the API (`created_on`, `project_id`).
+
+```ts
+import { IssueQueryInclude } from "redmine-api-client";
+
+// Read, with associated data
+const { issue } = await client.issuesClient.getIssue(42, {
+  include: [IssueQueryInclude.Journals, IssueQueryInclude.Attachments],
+});
+
+// Create
+const { issue: created } = await client.issuesClient.createIssue({
+  issue: { projectId: 1, subject: "Printer is on fire", priorityId: 4 },
+});
+
+// Update (adds a note to the history of the issue)
+await client.issuesClient.updateIssue(created.id, {
+  issue: { notes: "Fire is out, printer is not." },
+});
+
+// Delete
+await client.issuesClient.deleteIssue(created.id);
+```
+
+## Issues and projects
+
+| Sub-client                     | Methods                                                                                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `client.issuesClient`          | `getIssues`, `getIssue`, `createIssue`, `updateIssue`, `deleteIssue`, `addIssueWatcher`, `removeIssueWatcher`                                         |
+| `client.journalsClient`        | `updateJournal`, to change the notes of an issue's history entry                                                                                      |
+| `client.issueRelationsClient`  | `getIssueRelations`, `createIssueRelation`, `getIssueRelation`, `deleteIssueRelation`                                                                 |
+| `client.issueCategoriesClient` | `getProjectIssueCategories`, `createIssueCategory`, `getIssueCategory`, `updateIssueCategory`, `deleteIssueCategory`                                  |
+| `client.projectsClient`        | `getProjects`, `getProject`, `createProject`, `updateProject`, `deleteProject`, `archiveProject`, `unarchiveProject`, `closeProject`, `reopenProject` |
+| `client.versionsClient`        | `getProjectVersions`, `createVersion`, `getVersion`, `updateVersion`, `deleteVersion`                                                                 |
+
+Issues are updated with `updateIssue`, also to add notes. Changes and notes show up as journals, which `getIssue` returns with `include: [IssueQueryInclude.Journals]`.
+
+```ts
+await client.issuesClient.addIssueWatcher(42, { userId: 7 });
+```
+
+## Time tracking
+
+| Sub-client                 | Methods                                                                                   |
+| -------------------------- | ----------------------------------------------------------------------------------------- |
+| `client.timeEntriesClient` | `getTimeEntries`, `getTimeEntry`, `createTimeEntry`, `updateTimeEntry`, `deleteTimeEntry` |
+
+```ts
+await client.timeEntriesClient.createTimeEntry({
+  timeEntry: { issueId: 42, hours: 1.5, comments: "Fought the printer" },
+});
+```
+
+## Users and permissions
+
+| Sub-client                 | Methods                                                                                                              |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `client.usersClient`       | `getUsers`, `getUser`, `createUser`, `updateUser`, `deleteUser` (mostly admin only)                                  |
+| `client.myAccountClient`   | `getMyAccount`, `updateMyAccount`, the account of the API key's user                                                 |
+| `client.groupsClient`      | `getGroups`, `getGroup`, `createGroup`, `updateGroup`, `deleteGroup`, `addGroupUser`, `removeGroupUser` (admin only) |
+| `client.rolesClient`       | `getRoles`, `getRole`                                                                                                |
+| `client.membershipsClient` | `getProjectMemberships`, `createProjectMembership`, `getMembership`, `updateMembership`, `deleteMembership`          |
+
+`getUser` also takes `"current"` for the user of the API key:
+
+```ts
+const { user } = await client.usersClient.getUser("current");
+```
+
+## Content
+
+| Sub-client                 | Methods                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `client.wikiPagesClient`   | `getProjectWikiPages`, `getWikiPage`, `getWikiPageVersion`, `updateWikiPage` (also creates pages), `deleteWikiPage` |
+| `client.newsClient`        | `getNews`, `getProjectNews`, `getNewsItem`, `createNews`, `createProjectNews`, `updateNews`, `deleteNews`           |
+| `client.attachmentsClient` | `uploadFile`, `getAttachment`, `updateAttachment`, `deleteAttachment`                                               |
+| `client.filesClient`       | `getProjectFiles`, `createProjectFile`                                                                              |
+| `client.searchClient`      | `search`, `searchProject`                                                                                           |
+
+Files are uploaded in two steps: `uploadFile` returns a token, which you then attach to an issue, a wiki page or a project:
+
+```ts
+import { readFile } from "node:fs/promises";
+
+const { upload } = await client.attachmentsClient.uploadFile(await readFile("report.pdf"), {
+  filename: "report.pdf",
+  contentType: "application/pdf",
+});
+
+await client.issuesClient.updateIssue(42, {
+  issue: { uploads: [{ token: upload.token, filename: "report.pdf" }] },
+});
+```
+
+## Settings
+
+These read the configuration of the Redmine server, e.g. to fill select fields:
+
+| Sub-client                   | Methods                                                                 |
+| ---------------------------- | ----------------------------------------------------------------------- |
+| `client.trackersClient`      | `getTrackers`                                                           |
+| `client.issueStatusesClient` | `getIssueStatuses`                                                      |
+| `client.enumerationsClient`  | `getIssuePriorities`, `getTimeEntryActivities`, `getDocumentCategories` |
+| `client.customFieldsClient`  | `getCustomFields` (admin only)                                          |
+| `client.savedQueriesClient`  | `getQueries`                                                            |

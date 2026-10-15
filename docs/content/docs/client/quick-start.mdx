@@ -1,0 +1,84 @@
+---
+title: Quick start
+description: Install the client and make your first request.
+---
+
+<Steps>
+<Step>
+
+### Install the client
+
+<Tabs groupId="package-manager" persist items={['pnpm', 'npm', 'yarn', 'bun']}>
+<Tab value="pnpm">
+
+```bash
+pnpm add redmine-api-client
+```
+
+</Tab>
+<Tab value="npm">
+
+```bash
+npm install redmine-api-client
+```
+
+</Tab>
+<Tab value="yarn">
+
+```bash
+yarn add redmine-api-client
+```
+
+</Tab>
+<Tab value="bun">
+
+```bash
+bun add redmine-api-client
+```
+
+</Tab>
+</Tabs>
+
+The package is ESM only and works in Node.js and in browsers.
+
+</Step>
+<Step>
+
+### Create a client
+
+```ts title="redmine.ts"
+import { RedmineClient } from "redmine-api-client";
+
+export const client = new RedmineClient("https://redmine.example.com", {
+  key: process.env.REDMINE_API_KEY!,
+});
+```
+
+See [Authentication](/docs/client/authentication) for where to find the API key.
+
+</Step>
+<Step>
+
+### Call the API
+
+```ts
+import { IssueQueryInclude } from "redmine-api-client";
+
+const { issue } = await client.issuesClient.getIssue(42, {
+  include: [IssueQueryInclude.Journals],
+});
+
+console.log(issue.subject, issue.createdOn);
+```
+
+The [clients](/docs/client/clients) page shows what else the client can do.
+
+</Step>
+<Step>
+
+### Using React?
+
+See [React](/docs/react) for queries and hooks for TanStack Query.
+
+</Step>
+</Steps>

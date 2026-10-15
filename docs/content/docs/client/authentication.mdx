@@ -1,0 +1,40 @@
+---
+title: Authentication
+description: Authenticate requests with a Redmine API key.
+---
+
+The client sends the API key in the `X-Redmine-API-Key` header with every request.
+
+```ts
+const client = new RedmineClient("https://redmine.example.com", {
+  key: process.env.REDMINE_API_KEY!,
+});
+```
+
+## Getting an API key
+
+<Steps>
+  <Step>An administrator enables the REST API in **Administration → Settings → API → Enable REST web service**.</Step>
+  <Step>Each user finds their key on **My account**, in the sidebar under **API access key**.</Step>
+</Steps>
+
+<Callout type="warn" title="Keep the key secret">
+  The API key has the same permissions as its user. Don't ship it in a public frontend bundle. In browser apps, let each user enter their own key, or
+  call Redmine through your backend.
+</Callout>
+
+## Insecure connections
+
+The client only connects over HTTPS by default. For a Redmine server on plain HTTP, e.g. a local server in development, allow insecure connections:
+
+```ts
+const client = new RedmineClient("http://localhost:3000", { key }, { allowInsecureConnection: true });
+```
+
+<Callout type="warn">
+  Over plain HTTP, the API key is sent unencrypted with every request. Only use `allowInsecureConnection` for local development.
+</Callout>
+
+## Admin-only endpoints
+
+Some endpoints, e.g. users, groups and custom fields, need an administrator's key. The API reference notes this in the description of each operation.

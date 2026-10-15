@@ -1,0 +1,18 @@
+{
+  "title": "Client",
+  "description": "redmine-api-client",
+  "icon": "Braces",
+  "root": true,
+  "pages": [
+    "index",
+    "quick-start",
+    "authentication",
+    "clients",
+    "pagination",
+    "---Advanced---",
+    "types",
+    "error-handling",
+    "raw-responses",
+    "limitations"
+  ]
+}

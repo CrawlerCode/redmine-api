@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "fumadocs-openapi/css/preset.css";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+/* Redmine red as the accent color */
+:root {
+  --color-fd-primary: oklch(0.55 0.2 25);
+  --color-fd-primary-foreground: oklch(0.98 0 0);
+  --color-fd-ring: oklch(0.55 0.2 25);
+}
+
+.dark {
+  --color-fd-primary: oklch(0.68 0.18 25);
+  --color-fd-primary-foreground: oklch(0.15 0 0);
+  --color-fd-ring: oklch(0.68 0.18 25);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}

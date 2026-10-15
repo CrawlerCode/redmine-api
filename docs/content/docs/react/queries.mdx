@@ -1,0 +1,65 @@
+---
+title: Queries
+description: Queries for every resource of the Redmine API.
+---
+
+Each resource has:
+
+- **A filter** (`redmine<Resource>Queries`) with the query key prefix of all its queries, for `invalidateQueries`, `removeQueries` etc.
+- **Queries** for single items (`redmineIssueQuery`), returning the item itself instead of the response wrapper (`issue` instead of `{ issue }`).
+- **Infinite queries** for paged lists (`redmineIssuesQuery`), see [infinite queries](/docs/react/infinite-queries). Lists that Redmine doesn't page (e.g. trackers) use regular queries.
+
+All query keys start with `['redmine', <resource>]`, followed by the ID and the options:
+
+```ts
+redmineIssueQuery(client, 42, { include: [IssueQueryInclude.Journals] }).queryKey;
+// ['redmine', 'issues', 42, { include: ['journals'] }]
+```
+
+## Resources
+
+| Resource              | Filter                              | Queries                                                                               |
+| --------------------- | ----------------------------------- | ------------------------------------------------------------------------------------- |
+| Attachments           | `redmineAttachmentsQueries`         | `redmineAttachmentQuery`                                                              |
+| Custom fields         | `redmineCustomFieldsQueries`        | `redmineCustomFieldsQuery`                                                            |
+| Document categories   | `redmineDocumentCategoriesQueries`  | `redmineDocumentCategoriesQuery`                                                      |
+| Files                 | `redmineFilesQueries`               | `redmineProjectFilesQuery`                                                            |
+| Groups                | `redmineGroupsQueries`              | `redmineGroupQuery`, `redmineGroupsQuery`                                             |
+| Issue categories      | `redmineIssueCategoriesQueries`     | `redmineIssueCategoryQuery`, `redmineProjectIssueCategoriesQuery`                     |
+| Issue priorities      | `redmineIssuePrioritiesQueries`     | `redmineIssuePrioritiesQuery`                                                         |
+| Issue relations       | `redmineIssueRelationsQueries`      | `redmineIssueRelationQuery`, `redmineIssueRelationsQuery`                             |
+| Issue statuses        | `redmineIssueStatusesQueries`       | `redmineIssueStatusesQuery`                                                           |
+| Issues                | `redmineIssuesQueries`              | `redmineIssueQuery`, `redmineIssuesQuery`                                             |
+| Memberships           | `redmineMembershipsQueries`         | `redmineMembershipQuery`, `redmineProjectMembershipsQuery`                            |
+| My account            | `redmineMyAccountQueries`           | `redmineMyAccountQuery`                                                               |
+| News                  | `redmineNewsQueries`                | `redmineNewsItemQuery`, `redmineNewsQuery`, `redmineProjectNewsQuery`                 |
+| Projects              | `redmineProjectsQueries`            | `redmineProjectQuery`, `redmineProjectsQuery`                                         |
+| Roles                 | `redmineRolesQueries`               | `redmineRoleQuery`, `redmineRolesQuery`                                               |
+| Saved queries         | `redmineSavedQueriesQueries`        | `redmineSavedQueriesQuery`                                                            |
+| Search                | `redmineSearchQueries`              | `redmineSearchQuery`, `redmineProjectSearchQuery`                                     |
+| Time entries          | `redmineTimeEntriesQueries`         | `redmineTimeEntryQuery`, `redmineTimeEntriesQuery`                                    |
+| Time entry activities | `redmineTimeEntryActivitiesQueries` | `redmineTimeEntryActivitiesQuery`                                                     |
+| Trackers              | `redmineTrackersQueries`            | `redmineTrackersQuery`                                                                |
+| Users                 | `redmineUsersQueries`               | `redmineUserQuery`, `redmineUsersQuery`                                               |
+| Versions              | `redmineVersionsQueries`            | `redmineVersionQuery`, `redmineProjectVersionsQuery`                                  |
+| Wiki pages            | `redmineWikiPagesQueries`           | `redmineProjectWikiPagesQuery`, `redmineWikiPageQuery`, `redmineWikiPageVersionQuery` |
+
+## Options
+
+The last parameter of each query takes the options of the client operation, without `operationOptions` (and without `offset` and `limit` for paged lists):
+
+```ts
+useQuery(redmineUserQuery(client, "current", { include: [UserQueryInclude.Memberships] }));
+```
+
+## Overriding options
+
+The queries are plain query option objects, so spread them to change or add options:
+
+```ts
+useQuery({
+  ...redmineProjectQuery(client, "my-project"),
+  staleTime: 5 * 60 * 1000,
+  select: (project) => project.name,
+});
+```

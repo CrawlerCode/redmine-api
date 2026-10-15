@@ -1,0 +1,66 @@
+---
+title: Pagination
+description: Load pages of a list, and every item of a list.
+---
+
+Redmine pages lists with `offset` and `limit` (at most 100 items per page) and returns `total_count`, `offset` and `limit` with every page. The generated pager (`byPage()`) stops after the first page, and its page types leave out the paging data.
+
+`redmine-api-client` adds two helpers for this.
+
+## `fetchPage`
+
+Fetches one page of a list operation, including its paging data:
+
+```ts
+import { fetchPage } from "redmine-api-client";
+
+const page = await fetchPage(client.issuesClient.getIssues({ projectId: 1 }), { offset: 0, limit: 25 });
+
+page.issues; // Issue[]
+page.totalCount; // e.g. 142
+page.offset; // 0
+page.limit; // 25
+```
+
+## `getNextPageSettings`
+
+Returns the `offset` and `limit` of the page after a page, or `undefined` for the last page:
+
+```ts
+import { getNextPageSettings } from "redmine-api-client";
+
+getNextPageSettings({ totalCount: 142, offset: 0, limit: 25 }); // { offset: 25, limit: 25 }
+getNextPageSettings({ totalCount: 142, offset: 125, limit: 25 }); // undefined
+```
+
+## All items of a list
+
+Together they page through a whole list:
+
+```ts title="getAllIssues.ts"
+import { fetchPage, getNextPageSettings, type PageSettings } from "redmine-api-client";
+
+async function* getAllIssues(options: Parameters<typeof client.issuesClient.getIssues>[0] = {}) {
+  let settings: PageSettings | undefined = { offset: 0, limit: 100 };
+
+  while (settings) {
+    const page = await fetchPage(client.issuesClient.getIssues(options), settings);
+    yield* page.issues;
+    settings = getNextPageSettings(page);
+  }
+}
+
+for await (const issue of getAllIssues({ projectId: 1 })) {
+  console.log(issue.id, issue.subject);
+}
+```
+
+<Callout title="React">
+  In React, [`redminePaginatedInfiniteQueryOptions`](/docs/react/infinite-queries) wires these helpers into TanStack Query's infinite queries.
+</Callout>
+
+## Types
+
+<AutoTypeTable path="../packages/redmine-api-client/src/pagination.ts" name="PageSettings" />
+
+<AutoTypeTable path="../packages/redmine-api-client/src/pagination.ts" name="PageInfo" />

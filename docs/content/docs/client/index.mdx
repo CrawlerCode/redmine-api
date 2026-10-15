@@ -1,0 +1,21 @@
+---
+title: Introduction
+description: A typed, tested description of the Redmine REST API, with a TypeScript client.
+---
+
+import { Braces, Globe } from "lucide-react";
+
+This project describes the [Redmine REST API](https://www.redmine.org/projects/redmine/wiki/Rest_api) as a [TypeSpec](https://typespec.io) specification, versioned by Redmine release. From the spec, it generates:
+
+<Cards>
+  <Card title="OpenAPI reference" href="/docs/api/7.0.0/issues/get-issues" icon={<Globe />}>
+    One OpenAPI 3.1 document per Redmine release, from 3.0 to 7.0, browsable in the API Reference.
+  </Card>
+  <Card title="redmine-api-client" href="/docs/client/quick-start" icon={<Braces />}>
+    A TypeScript client with a typed method for every endpoint and pagination helpers.
+  </Card>
+</Cards>
+
+## Why a spec?
+
+Redmine documents its API in wiki pages, which leave out many properties and don't say which Redmine version added a feature. This spec is checked against real Redmine servers: integration tests start Redmine 3.1 to 7.0 in Docker, call every endpoint and validate the raw responses against the OpenAPI document of that version. A test fails when a response doesn't match the spec, uses an undeclared status code, or contains properties the spec doesn't declare.
