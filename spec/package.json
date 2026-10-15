@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "compile:watch": "tsp compile . --watch",
-    "compile": "tsp compile . && npm pkg set private=true --json --prefix ../generated/redmine-api-client && prettier --write ../schema/openapi ../generated/redmine-api-client"
+    "compile": "tsp compile . && npm pkg set private=true --json --prefix ../generated/redmine-api-client && prettier --write --ignore-path ../.gitignore --ignore-path ../.prettierignore ../schema/openapi ../generated/redmine-api-client"
   },
   "devDependencies": {
     "@typespec/compiler": "1.17.0",
