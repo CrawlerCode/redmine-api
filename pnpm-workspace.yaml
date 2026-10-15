@@ -5,6 +5,13 @@ packages:
   - packages/*
   - generated/*
 
+catalog:
+  "@types/node": ^24.19.2
+  "@typespec/ts-http-runtime": 0.2.1
+  tsdown: ^0.23.1
+  typescript: ^7.0.2
+  vitest: ^5.0.4
+
 overrides:
   "@alloy-js/core": 0.25.0
   "@alloy-js/typescript": 0.25.0

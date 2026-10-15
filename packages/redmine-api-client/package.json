@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "dependencies": {
-    "@typespec/ts-http-runtime": "0.2.1",
+    "@typespec/ts-http-runtime": "catalog:",
     "uri-template": "^2.0.0"
   },
   "scripts": {
@@ -19,9 +19,9 @@
     "dist"
   ],
   "devDependencies": {
-    "@types/node": "^24.19.2",
+    "@types/node": "catalog:",
     "redmine-api-client-generated": "workspace:*",
-    "tsdown": "^0.23.1",
-    "typescript": "^5.9.3"
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
   }
 }

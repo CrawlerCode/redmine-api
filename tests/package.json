@@ -23,10 +23,12 @@
     "redmine-api-client": "workspace:*"
   },
   "devDependencies": {
+    "@types/node": "catalog:",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "cross-env": "^10.1.0",
-    "vitest": "^5.0.4",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
     "yaml": "^2.9.1"
   }
 }
