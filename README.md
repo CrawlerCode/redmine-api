@@ -36,6 +36,11 @@ The version a feature was added in is taken from the Redmine source (`app/views/
 
 ## Using the client
 
+```sh
+pnpm add redmine-api-client
+pnpm add redmine-api-client-react @tanstack/react-query   # TanStack Query options for React
+```
+
 ```ts
 import { IssueQueryInclude, RedmineClient } from "redmine-api-client";
 
@@ -126,8 +131,23 @@ Use `spec.isAtLeast("4.1.0")` for checks that depend on the Redmine version.
 
 ## Releasing
 
-The root package, `spec` and the published packages in [`packages/`](packages) share one version. Bump them together:
+Releases are made by [semantic-release](https://semantic-release.gitbook.io) in the [release workflow](.github/workflows/release.yml), on every push to `main` or `beta`. The next version follows from the [Conventional Commits](https://www.conventionalcommits.org) since the last release: `fix:` makes a patch, `feat:` a minor and a `!` or `BREAKING CHANGE:` footer a major release. Other types (`docs:`, `build:`, `test:`, ...) appear in the release notes but don't trigger a release.
+
+| Branch | Version        | npm dist-tag | GitHub release |
+| ------ | -------------- | ------------ | -------------- |
+| `main` | `0.1.0`        | `latest`     | release        |
+| `beta` | `0.1.0-beta.1` | `beta`       | prerelease     |
+
+A release ([`release.config.mjs`](release.config.mjs)):
+
+1. Sets the version of the root package, `spec` and the packages in [`packages/`](packages) with `pnpm version:packages`, so they always share one version.
+2. Builds the packages and publishes them to npm with `pnpm publish:packages --provenance`, which replaces the `workspace:` ranges with the released version.
+3. Commits the bumped `package.json` files and [`CHANGELOG.md`](CHANGELOG.md) as `chore(release): <version> [skip ci]`, tags it and creates the GitHub release.
+
+npm authenticates the workflow by [trusted publishing](https://docs.npmjs.com/trusted-publishers) (OIDC), so no npm token is stored. GitHub uses the workflow's `GITHUB_TOKEN`.
+
+To check what the next release would be, without publishing anything:
 
 ```sh
-pnpm version:bump minor   # or major, patch, or an exact version
+pnpm release --dry-run --no-ci
 ```

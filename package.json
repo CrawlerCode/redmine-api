@@ -1,7 +1,7 @@
 {
   "name": "redmine-api-monorepo",
   "description": "Redmine API Monorepo",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "CrawlerCode",
   "keywords": [],
   "license": "MIT",
@@ -11,18 +11,25 @@
     "dev": "pnpm --filter dev run dev",
     "spec:compile:watch": "pnpm --filter spec run compile:watch",
     "spec:compile": "pnpm --filter spec run compile",
-    "client:build": "pnpm --filter \"./packages/*...\" run build",
+    "build:packages": "pnpm --filter \"{./packages/*}...\" run build",
     "docs:dev": "pnpm --filter docs run dev",
     "docs:build": "pnpm --filter docs run build",
-    "build": "pnpm spec:compile && pnpm client:build",
+    "build": "pnpm spec:compile && pnpm build:packages",
     "test": "pnpm --filter tests run test",
     "test:packages": "pnpm --filter \"./packages/*\" run typecheck && pnpm --filter \"./packages/*\" run test",
     "format": "prettier --write .",
-    "version:bump": "pnpm -r --filter . --filter spec --filter \"./packages/*\" version"
+    "version:packages": "pnpm -r --filter . --filter spec --filter \"./packages/*\" version",
+    "publish:packages": "pnpm --filter \"./packages/*\" publish --access public --no-git-checks",
+    "release": "semantic-release"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "7.0.0",
+    "@semantic-release/exec": "7.1.0",
+    "@semantic-release/git": "11.0.1",
     "@typespec/prettier-plugin-typespec": "1.17.0",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
     "prettier": "^3.9.10",
+    "semantic-release": "25.0.9",
     "typescript": "catalog:"
   }
 }

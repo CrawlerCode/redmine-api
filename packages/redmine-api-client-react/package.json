@@ -1,6 +1,25 @@
 {
   "name": "redmine-api-client-react",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "TanStack Query options, hooks and provider for redmine-api-client",
+  "author": "CrawlerCode",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrawlerCode/redmine-api-client.git",
+    "directory": "packages/redmine-api-client-react"
+  },
+  "homepage": "https://github.com/CrawlerCode/redmine-api-client#readme",
+  "bugs": {
+    "url": "https://github.com/CrawlerCode/redmine-api-client/issues"
+  },
+  "keywords": [
+    "redmine",
+    "api",
+    "client",
+    "react",
+    "tanstack-query"
+  ],
   "type": "module",
   "scripts": {
     "build": "tsdown",
