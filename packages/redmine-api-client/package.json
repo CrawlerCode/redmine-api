@@ -1,6 +1,6 @@
 {
   "name": "redmine-api-client",
-  "version": "0.0.1",
+  "version": "0.1.0-beta.1",
   "description": "Typed Redmine REST API client",
   "author": "CrawlerCode",
   "license": "MIT",

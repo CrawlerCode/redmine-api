@@ -1,6 +1,6 @@
 {
   "name": "redmine-api-client-react",
-  "version": "0.0.1",
+  "version": "0.1.0-beta.1",
   "description": "TanStack Query options, hooks and provider for redmine-api-client",
   "author": "CrawlerCode",
   "license": "MIT",
