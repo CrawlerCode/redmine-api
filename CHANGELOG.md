@@ -1,3 +1,32 @@
+## [0.1.0](https://github.com/CrawlerCode/redmine-api-client/compare/v0.0.1...v0.1.0) (2026-10-17)
+
+### 🚀 Features
+
+* add Redmine REST API spec, generated client and integration tests ([8cf7d49](https://github.com/CrawlerCode/redmine-api-client/commit/8cf7d49bdd2e52f1a6fc9ae6097d5ba1f3245ec2))
+* **client:** add pagination helpers, utility types and operation type exports ([25a84f9](https://github.com/CrawlerCode/redmine-api-client/commit/25a84f93473e67f30cc34ecd0cdf84402bdc5b0b))
+* **react:** add redmine-api-client-react with TanStack Query options, hooks and provider ([03cd4e6](https://github.com/CrawlerCode/redmine-api-client/commit/03cd4e6f072400e7071aca51c85f3596fd9a594c))
+
+### 📖 Documentation
+
+* add documentation site with Fumadocs, deployed to GitHub Pages ([7e30684](https://github.com/CrawlerCode/redmine-api-client/commit/7e30684837fd6beff34b32e07144e948f8039c42))
+
+### 🧪 Tests
+
+* add unit tests for redmine-api-client and redmine-api-client-react ([749e2e4](https://github.com/CrawlerCode/redmine-api-client/commit/749e2e4292b2aba25fab602e149a4d42bf330304))
+
+### 📦 Builds
+
+* add pnpm catalog and declare typescript and @types/node per package ([8f97a71](https://github.com/CrawlerCode/redmine-api-client/commit/8f97a71fef6a752a944e1e66657532c407c0ccbb))
+* add prettier and format the repo ([c11e9db](https://github.com/CrawlerCode/redmine-api-client/commit/c11e9db0a0ad14e7c1b406fb7d208eb6267a1e7a))
+* add version:bump script ([a700d40](https://github.com/CrawlerCode/redmine-api-client/commit/a700d4021e3aebd3c0c214eee03abeb8b744e0d1))
+* make prettier in spec compile respect the root ignore files ([7e7a6d7](https://github.com/CrawlerCode/redmine-api-client/commit/7e7a6d7ba30a7265a2543793d3afb338858bde62))
+* move generated OpenAPI schema out of tsp-output ([3ff2196](https://github.com/CrawlerCode/redmine-api-client/commit/3ff21961e2c83962869fc20a833effab984f0134))
+* split JS client into generated and published packages ([494385c](https://github.com/CrawlerCode/redmine-api-client/commit/494385c0d982d23523886b818d9b5cff6c695522))
+
+### ⚡ CI
+
+* add semantic-release flow with npm trusted publishing ([f6e6cf6](https://github.com/CrawlerCode/redmine-api-client/commit/f6e6cf6766c94f3bdceb134821ccf88bb2607f88))
+
 ## [0.1.0-beta.1](https://github.com/CrawlerCode/redmine-api-client/compare/v0.0.1...v0.1.0-beta.1) (2026-10-17)
 
 ### 🚀 Features
