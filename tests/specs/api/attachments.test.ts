@@ -9,12 +9,33 @@ import {
   fetchRaw,
   withResponse,
 } from "../../helpers/client.ts";
-import { createAttachment, createIssueWithAttachment, createProject } from "../../helpers/fixtures.ts";
+import { createAttachment, createIssueWithAttachment, createProject, fixtureFiles, readFixture } from "../../helpers/fixtures.ts";
 import { createPng } from "../../helpers/png.ts";
 
 /** Attaches a 200x100 PNG image to a new issue */
 async function createImageAttachment(projectId: number) {
   return (await createIssueWithAttachment(client, projectId, createPng(200, 100), "image.png", "image/png")).attachment;
+}
+
+/** Fixture files with their content type, for `it.each` */
+const fixtures = Object.entries(fixtureFiles) as [keyof typeof fixtureFiles, string][];
+
+/** Attaches a file of `tests/fixtures` to a new issue */
+async function createFixtureAttachment(projectId: number, filename: keyof typeof fixtureFiles) {
+  const file = await readFixture(filename);
+  const { attachment } = await createIssueWithAttachment(client, projectId, file, filename, fixtureFiles[filename]);
+  return { file, attachment };
+}
+
+/** Collects the content type headers of the responses of a client call */
+function captureContentTypes() {
+  const contentTypes: (string | undefined)[] = [];
+  return {
+    contentTypes,
+    options: {
+      operationOptions: { onResponse: (response: { headers: Record<string, string> }) => contentTypes.push(response.headers["content-type"]) },
+    },
+  };
 }
 
 /** Reads the dimensions from the header of a PNG image */
@@ -88,7 +109,7 @@ describe("Attachments API", () => {
     });
   });
 
-  // The generated client can't download files (it expects a base64 body), so these tests use plain requests
+  // Plain requests check the raw responses against the spec, which has no schema for binary bodies
   describeOperation("Attachments_downloadAttachment", () => {
     it("downloads the content of an attachment", async () => {
       const attachment = await createAttachment(client, project.id, "Hello Redmine");
@@ -106,11 +127,24 @@ describe("Attachments API", () => {
       expect(response.status).toBe(404);
     });
 
-    // Known client bug: binary responses are base64-decoded and the content type is compared with "undefined"
-    it.fails("downloads via the generated client", async () => {
+    it("downloads via the client", async () => {
       const attachment = await createAttachment(client, project.id, "Hello Redmine");
       const content = await client.attachmentsClient.downloadAttachment(attachment.id);
       expect(new TextDecoder().decode(content)).toBe("Hello Redmine");
+    });
+
+    it.each(fixtures)("downloads %s unchanged via the client", async (filename, contentType) => {
+      const { file, attachment } = await createFixtureAttachment(project.id, filename);
+      expect(attachment.filesize).toBe(file.length);
+
+      const { contentTypes, options } = captureContentTypes();
+      const content = await client.attachmentsClient.downloadAttachment(attachment.id, options);
+      expect(contentTypes[0]).toContain(contentType);
+      expect(content).toEqual(file);
+    });
+
+    it("throws a RestError for an unknown attachment via the client", async () => {
+      await expectHttpError(client.attachmentsClient.downloadAttachment(999_999), 404);
     });
   });
 
@@ -133,6 +167,28 @@ describe("Attachments API", () => {
       expectResponse("Attachments_getAttachmentThumbnail", response.status, undefined);
       expect(response.status).toBe(404);
     });
+
+    // Thumbnails keep the format of the image, PDF previews are PNG images
+    it.for([
+      ["redmine-logo.png", "image/png", [0x89, 0x50, 0x4e, 0x47]],
+      ["redmine-logo.jpg", "image/jpeg", [0xff, 0xd8, 0xff]],
+      ["redmine-logo.gif", "image/gif", [0x47, 0x49, 0x46, 0x38]],
+      ["redmine-logo.pdf", "image/png", [0x89, 0x50, 0x4e, 0x47]],
+    ] as const)("gets the thumbnail of %s via the client", async ([filename, contentType, magic], { skip }) => {
+      const { attachment } = await createFixtureAttachment(project.id, filename);
+      // PDF previews need Redmine 4.1 and Ghostscript
+      if (!attachment.thumbnailUrl) skip(`no thumbnail for ${filename}`);
+
+      const { contentTypes, options } = captureContentTypes();
+      const thumbnail = await client.attachmentsClient.getAttachmentThumbnail(attachment.id, options);
+      expect(contentTypes[0]).toContain(contentType);
+      expect([...thumbnail.subarray(0, magic.length)]).toEqual(magic);
+    });
+
+    it("throws a RestError for an attachment without thumbnail via the client", async () => {
+      const attachment = await createAttachment(client, project.id);
+      await expectHttpError(client.attachmentsClient.getAttachmentThumbnail(attachment.id), 404);
+    });
   });
 
   describeOperation("Attachments_getAttachmentThumbnailWithSize", () => {
@@ -144,6 +200,14 @@ describe("Attachments API", () => {
       expect(response.status).toBe(200);
       // The thumbnail fits into a square of the given size
       const { width, height } = pngSize(new Uint8Array(await response.arrayBuffer()));
+      expect(Math.max(width, height)).toBe(50);
+    });
+
+    it("gets the thumbnail via the client", async () => {
+      const attachment = await createImageAttachment(project.id);
+
+      const thumbnail = await client.attachmentsClient.getAttachmentThumbnailWithSize(attachment.id, 50);
+      const { width, height } = pngSize(thumbnail);
       expect(Math.max(width, height)).toBe(50);
     });
   });

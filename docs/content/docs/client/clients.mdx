@@ -97,13 +97,13 @@ const { user } = await client.usersClient.getUser("current");
 
 ## Content
 
-| Sub-client                 | Methods                                                                                                             |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `client.wikiPagesClient`   | `getProjectWikiPages`, `getWikiPage`, `getWikiPageVersion`, `updateWikiPage` (also creates pages), `deleteWikiPage` |
-| `client.newsClient`        | `getNews`, `getProjectNews`, `getNewsItem`, `createNews`, `createProjectNews`, `updateNews`, `deleteNews`           |
-| `client.attachmentsClient` | `uploadFile`, `getAttachment`, `updateAttachment`, `deleteAttachment`                                               |
-| `client.filesClient`       | `getProjectFiles`, `createProjectFile`                                                                              |
-| `client.searchClient`      | `search`, `searchProject`                                                                                           |
+| Sub-client                 | Methods                                                                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `client.wikiPagesClient`   | `getProjectWikiPages`, `getWikiPage`, `getWikiPageVersion`, `updateWikiPage` (also creates pages), `deleteWikiPage`               |
+| `client.newsClient`        | `getNews`, `getProjectNews`, `getNewsItem`, `createNews`, `createProjectNews`, `updateNews`, `deleteNews`                         |
+| `client.attachmentsClient` | `uploadFile`, `getAttachment`, `downloadAttachment`, `getAttachmentThumbnail`(`WithSize`), `updateAttachment`, `deleteAttachment` |
+| `client.filesClient`       | `getProjectFiles`, `createProjectFile`                                                                                            |
+| `client.searchClient`      | `search`, `searchProject`                                                                                                         |
 
 Files are uploaded in two steps: `uploadFile` returns a token, which you then attach to an issue, a wiki page or a project:
 
@@ -118,6 +118,15 @@ const { upload } = await client.attachmentsClient.uploadFile(await readFile("rep
 await client.issuesClient.updateIssue(42, {
   issue: { uploads: [{ token: upload.token, filename: "report.pdf" }] },
 });
+```
+
+Downloads and thumbnails return the file content as a `Uint8Array`:
+
+```ts
+import { writeFile } from "node:fs/promises";
+
+await writeFile("report.pdf", await client.attachmentsClient.downloadAttachment(attachmentId));
+const thumbnail = await client.attachmentsClient.getAttachmentThumbnailWithSize(attachmentId, 200);
 ```
 
 ## Settings
