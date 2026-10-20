@@ -8,6 +8,7 @@ on:
       - schema/openapi/**
       - packages/*/src/**
       - pnpm-lock.yaml
+      - mise.toml
       - .github/workflows/docs.yml
   workflow_dispatch:
 
@@ -27,11 +28,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v6
+      # Installs node and pnpm as pinned in mise.toml
+      - uses: jdx/mise-action@v5
 
+      # Only restores the pnpm store cache, node comes from mise
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
