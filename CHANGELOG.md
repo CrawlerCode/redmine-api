@@ -1,3 +1,25 @@
+## [0.2.0](https://github.com/CrawlerCode/redmine-api/compare/v0.1.0...v0.2.0) (2026-10-20)
+
+### 🚀 Features
+
+* **client:** add toPlainDate and fromPlainDate helpers ([ef3f59c](https://github.com/CrawlerCode/redmine-api/commit/ef3f59c99c961d46aed80771c7965e5be65ed89e))
+* **client:** export RestError and add isRestError helper ([3434767](https://github.com/CrawlerCode/redmine-api/commit/3434767414369e71f6f345677e8d6d1b916f0d6a))
+* **client:** match network errors in isRedmineRestError and export RuntimeRestError ([5bef1e3](https://github.com/CrawlerCode/redmine-api/commit/5bef1e31af82b8a2dbaf752916e36d22398fcc0a))
+
+### 🩹 Fixes
+
+* **client:** download attachments and thumbnails as binary ([e779b21](https://github.com/CrawlerCode/redmine-api/commit/e779b21e51736a1d988f46682972e9a3fbf8f0d0))
+* **spec:** make time entry spent_on required in responses ([00768e8](https://github.com/CrawlerCode/redmine-api/commit/00768e89f917598cad3bf38cd93624a552b33f94))
+* **spec:** mark always-returned fields as required in responses ([f106b66](https://github.com/CrawlerCode/redmine-api/commit/f106b665c02c493e268d390bafaddc1d318a6cd4))
+
+### 📖 Documentation
+
+* rewrite README, add license and rename repo to redmine-api ([da78619](https://github.com/CrawlerCode/redmine-api/commit/da7861951cd2d86178ebeda149a608202fe6fe0a))
+
+### 📦 Builds
+
+* add mise config and devEngines, set up CI tools via mise ([070c83b](https://github.com/CrawlerCode/redmine-api/commit/070c83bdc94311cf21d87f784aae9a0654beb3cc))
+
 ## [0.2.0-beta.2](https://github.com/CrawlerCode/redmine-api/compare/v0.2.0-beta.1...v0.2.0-beta.2) (2026-10-20)
 
 ### 🚀 Features
