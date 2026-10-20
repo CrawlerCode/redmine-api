@@ -3,4 +3,5 @@ export * from "redmine-api-client-generated";
 export { AttachmentsClient, RedmineClient } from "./redmineClient.js";
 export type * from "./operations.js";
 export * from "./pagination.js";
+export * from "./plainDate.js";
 export type * from "./utilityTypes.js";

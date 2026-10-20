@@ -39,3 +39,17 @@ import type { RedmineClient, RedmineListQueryOptions } from "redmine-api-client"
 
 type GetIssuesOptions = RedmineListQueryOptions<RedmineClient["issuesClient"]["getIssues"], 0>;
 ```
+
+## Dates
+
+Timestamps like `createdOn` are `Date`s, but calendar dates like `dueDate`, `spentOn` or the `from`/`to` filters are `YYYY-MM-DD` strings, since a `Date` is a point in time and would shift the day between timezones. `toPlainDate` and `fromPlainDate` convert between both using the local timezone:
+
+```ts
+import { fromPlainDate, toPlainDate } from "redmine-api-client";
+
+const { timeEntries } = await client.timeEntriesClient.getTimeEntries({ from: toPlainDate(new Date()) });
+
+const dueDate = issue.dueDate ? fromPlainDate(issue.dueDate) : undefined;
+```
+
+`fromPlainDate` returns local midnight, unlike `new Date("2024-01-15")`, which is UTC midnight.
