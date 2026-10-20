@@ -2284,15 +2284,15 @@ export function jsonCreateIssueToTransportTransform(input_?: CreateIssue | null)
     subject: input_.subject,
     fixed_version_id: input_.fixedVersionId,
     parent_issue_id: input_.parentIssueId,
-    start_date: input_.startDate,
-    due_date: input_.dueDate,
-    estimated_hours: input_.estimatedHours,
-    is_private: input_.isPrivate,
     custom_fields: jsonArrayCreateCustomFieldValueToTransportTransform(input_.customFields),
     watcher_user_ids: jsonArraySafeintToTransportTransform(input_.watcherUserIds),
     uploads: jsonArrayUploadToTransportTransform(input_.uploads),
     description: input_.description,
     done_ratio: input_.doneRatio,
+    start_date: input_.startDate,
+    due_date: input_.dueDate,
+    estimated_hours: input_.estimatedHours,
+    is_private: input_.isPrivate,
   }!;
 }
 export function jsonCreateIssueToApplicationTransform(input_?: any): CreateIssue {
@@ -2309,15 +2309,15 @@ export function jsonCreateIssueToApplicationTransform(input_?: any): CreateIssue
     subject: input_.subject,
     fixedVersionId: input_.fixed_version_id,
     parentIssueId: input_.parent_issue_id,
-    startDate: input_.start_date,
-    dueDate: input_.due_date,
-    estimatedHours: input_.estimated_hours,
-    isPrivate: input_.is_private,
     customFields: jsonArrayCreateCustomFieldValueToApplicationTransform(input_.custom_fields),
     watcherUserIds: jsonArraySafeintToApplicationTransform(input_.watcher_user_ids),
     uploads: jsonArrayUploadToApplicationTransform(input_.uploads),
     description: input_.description,
     doneRatio: input_.done_ratio,
+    startDate: input_.start_date,
+    dueDate: input_.due_date,
+    estimatedHours: input_.estimated_hours,
+    isPrivate: input_.is_private,
   }!;
 }
 export function jsonUpdateIssueDtoToTransportTransform(input_?: UpdateIssueDto | null): any {
@@ -3748,9 +3748,9 @@ export function jsonCreateTimeEntryToTransportTransform(input_?: CreateTimeEntry
     user_id: input_.userId,
     activity_id: input_.activityId,
     hours: input_.hours,
+    custom_fields: jsonArrayCreateCustomFieldValueToTransportTransform(input_.customFields),
     comments: input_.comments,
     spent_on: input_.spentOn,
-    custom_fields: jsonArrayCreateCustomFieldValueToTransportTransform(input_.customFields),
   }!;
 }
 export function jsonCreateTimeEntryToApplicationTransform(input_?: any): CreateTimeEntry {
@@ -3763,9 +3763,9 @@ export function jsonCreateTimeEntryToApplicationTransform(input_?: any): CreateT
     userId: input_.user_id,
     activityId: input_.activity_id,
     hours: input_.hours,
+    customFields: jsonArrayCreateCustomFieldValueToApplicationTransform(input_.custom_fields),
     comments: input_.comments,
     spentOn: input_.spent_on,
-    customFields: jsonArrayCreateCustomFieldValueToApplicationTransform(input_.custom_fields),
   }!;
 }
 export function jsonUpdateTimeEntryDtoToTransportTransform(input_?: UpdateTimeEntryDto | null): any {
@@ -4024,11 +4024,11 @@ export function jsonCreateVersionToTransportTransform(input_?: CreateVersion | n
   }
   return {
     name: input_.name,
-    due_date: input_.dueDate,
     wiki_page_title: input_.wikiPageTitle,
     custom_fields: jsonArrayCreateCustomFieldValueToTransportTransform(input_.customFields),
     description: input_.description,
     status: input_.status,
+    due_date: input_.dueDate,
     sharing: input_.sharing,
   }!;
 }
@@ -4038,11 +4038,11 @@ export function jsonCreateVersionToApplicationTransform(input_?: any): CreateVer
   }
   return {
     name: input_.name,
-    dueDate: input_.due_date,
     wikiPageTitle: input_.wiki_page_title,
     customFields: jsonArrayCreateCustomFieldValueToApplicationTransform(input_.custom_fields),
     description: input_.description,
     status: input_.status,
+    dueDate: input_.due_date,
     sharing: input_.sharing,
   }!;
 }

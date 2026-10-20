@@ -1,12 +1,24 @@
 {
   "name": "redmine-api-monorepo",
   "description": "Redmine API Monorepo",
-  "version": "0.1.0",
+  "version": "0.2.0-beta.2",
   "author": "CrawlerCode",
   "keywords": [],
   "license": "MIT",
   "private": true,
   "packageManager": "pnpm@12.11.2",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.11.2",
+      "onFail": "warn"
+    }
+  },
   "scripts": {
     "dev": "pnpm --filter dev run dev",
     "spec:compile:watch": "pnpm --filter spec run compile:watch",

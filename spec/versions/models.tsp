@@ -42,7 +42,7 @@ model Version {
   /**
    * Due date
    */
-  due_date?: plainDate | null;
+  due_date: plainDate | null;
 
   /**
    * Version sharing
@@ -105,13 +105,17 @@ enum VersionSharing {
 }
 
 /**
- * Version create payload. `description`, `status` (default `open`) and `sharing` (default `none`) are optional on create.
+ * Version create payload. `description`, `status` (default `open`), `due_date` and `sharing` (default `none`) are optional
+ * on create.
  */
 model CreateVersion {
-  ...OmitProperties<Create<Version>, "description" | "status" | "sharing">;
+  ...OmitProperties<
+    Create<Version>,
+    "description" | "status" | "due_date" | "sharing"
+  >;
   ...OptionalProperties<PickProperties<
     Create<Version>,
-    "description" | "status" | "sharing"
+    "description" | "status" | "due_date" | "sharing"
   >>;
 }
 

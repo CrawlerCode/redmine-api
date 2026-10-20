@@ -3259,27 +3259,6 @@ components:
               format: int64
             - type: "null"
           description: Parent issue ID
-        start_date:
-          anyOf:
-            - type: string
-              format: date
-            - type: "null"
-          description: Start date
-        due_date:
-          anyOf:
-            - type: string
-              format: date
-            - type: "null"
-          description: Due date
-        estimated_hours:
-          anyOf:
-            - type: number
-              format: double
-            - type: "null"
-          description: Estimated hours
-        is_private:
-          type: boolean
-          description: Is issue private
         custom_fields:
           type: array
           items:
@@ -3307,7 +3286,30 @@ components:
           minimum: 0
           maximum: 100
           description: Done ratio
-      description: Issue create payload. `description` and `done_ratio` are always returned, but optional on create.
+        start_date:
+          anyOf:
+            - type: string
+              format: date
+            - type: "null"
+          description: Start date
+        due_date:
+          anyOf:
+            - type: string
+              format: date
+            - type: "null"
+          description: Due date
+        estimated_hours:
+          anyOf:
+            - type: number
+              format: double
+            - type: "null"
+          description: Estimated hours
+        is_private:
+          type: boolean
+          description: Is issue private
+      description: |-
+        Issue create payload. `description`, `start_date`, `due_date`, `done_ratio`, `estimated_hours` and `is_private` are
+        always returned, but optional on create.
     Issues.DTOs.AddWatcherDto:
       type: object
       required:
@@ -3374,8 +3376,13 @@ components:
         - subject
         - description
         - done_ratio
+        - start_date
+        - due_date
+        - estimated_hours
+        - is_private
         - created_on
         - updated_on
+        - closed_on
       properties:
         id:
           type: integer
@@ -3722,6 +3729,8 @@ components:
       required:
         - property
         - name
+        - old_value
+        - new_value
       properties:
         property:
           anyOf:
@@ -4810,6 +4819,11 @@ components:
           type: number
           format: double
           description: Spent hours
+        custom_fields:
+          type: array
+          items:
+            $ref: "#/components/schemas/CreateCustomFieldValue"
+          description: Custom field values
         comments:
           anyOf:
             - type: string
@@ -4819,13 +4833,8 @@ components:
         spent_on:
           type: string
           format: date
-          description: Date the time was spent (defaults to the current date)
-        custom_fields:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateCustomFieldValue"
-          description: Custom field values
-      description: Time entry create payload
+          description: Date the time was spent (defaults to the current date on create)
+      description: Time entry create payload. `comments` and `spent_on` are always returned, but optional on create.
     TimeEntries.DTOs.CreateTimeEntryDto:
       type: object
       required:
@@ -4879,6 +4888,8 @@ components:
         - user
         - activity
         - hours
+        - comments
+        - spent_on
         - created_on
         - updated_on
       properties:
@@ -4927,7 +4938,7 @@ components:
         spent_on:
           type: string
           format: date
-          description: Date the time was spent (defaults to the current date)
+          description: Date the time was spent (defaults to the current date on create)
         custom_fields:
           type: array
           items:
@@ -4974,7 +4985,7 @@ components:
         spent_on:
           type: string
           format: date
-          description: Date the time was spent (defaults to the current date)
+          description: Date the time was spent (defaults to the current date on create)
         custom_fields:
           type: array
           items:
@@ -5407,12 +5418,6 @@ components:
         name:
           type: string
           description: Version name
-        due_date:
-          anyOf:
-            - type: string
-              format: date
-            - type: "null"
-          description: Due date
         wiki_page_title:
           anyOf:
             - type: string
@@ -5431,10 +5436,18 @@ components:
         status:
           $ref: "#/components/schemas/Versions.VersionStatus"
           description: Version status
+        due_date:
+          anyOf:
+            - type: string
+              format: date
+            - type: "null"
+          description: Due date
         sharing:
           $ref: "#/components/schemas/Versions.VersionSharing"
           description: Version sharing
-      description: Version create payload. `description`, `status` (default `open`) and `sharing` (default `none`) are optional on create.
+      description: |-
+        Version create payload. `description`, `status` (default `open`), `due_date` and `sharing` (default `none`) are optional
+        on create.
     Versions.DTOs.CreateVersionDto:
       type: object
       required:
@@ -5512,6 +5525,7 @@ components:
         - name
         - description
         - status
+        - due_date
         - sharing
         - created_on
         - updated_on

@@ -143,17 +143,17 @@ model Issue {
   /**
    * Start date
    */
-  start_date?: plainDate | null;
+  start_date: plainDate | null;
 
   /**
    * Due date
    */
-  due_date?: plainDate | null;
+  due_date: plainDate | null;
 
   /**
    * Estimated hours
    */
-  estimated_hours?: float64 | null;
+  estimated_hours: float64 | null;
 
   /**
    * Spent hours (only if the user is allowed to view time entries)
@@ -178,7 +178,7 @@ model Issue {
   /**
    * Is issue private
    */
-  is_private?: boolean;
+  is_private: boolean;
 
   /**
    * Custom field values
@@ -201,7 +201,7 @@ model Issue {
    * Issue closed date
    */
   @visibility(Lifecycle.Read)
-  closed_on?: utcDateTime | null;
+  closed_on: utcDateTime | null;
 
   /**
    * Child issues (`include=children`)
@@ -329,13 +329,27 @@ model Changeset {
 }
 
 /**
- * Issue create payload. `description` and `done_ratio` are always returned, but optional on create.
+ * Issue create payload. `description`, `start_date`, `due_date`, `done_ratio`, `estimated_hours` and `is_private` are
+ * always returned, but optional on create.
  */
 model CreateIssue {
-  ...OmitProperties<Create<Issue>, "description" | "done_ratio">;
+  ...OmitProperties<
+    Create<Issue>,
+    | "description"
+    | "start_date"
+    | "due_date"
+    | "done_ratio"
+    | "estimated_hours"
+    | "is_private"
+  >;
   ...OptionalProperties<PickProperties<
     Create<Issue>,
-    "description" | "done_ratio"
+    | "description"
+    | "start_date"
+    | "due_date"
+    | "done_ratio"
+    | "estimated_hours"
+    | "is_private"
   >>;
 }
 

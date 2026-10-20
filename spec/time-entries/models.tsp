@@ -81,12 +81,12 @@ model TimeEntry {
    * Comments (255 characters max)
    */
   @maxLength(255)
-  comments?: string | null;
+  comments: string | null;
 
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
-  spent_on?: plainDate;
+  spent_on: plainDate;
 
   /**
    * Custom field values
@@ -107,10 +107,14 @@ model TimeEntry {
 }
 
 /**
- * Time entry create payload
+ * Time entry create payload. `comments` and `spent_on` are always returned, but optional on create.
  */
 model CreateTimeEntry {
-  ...Create<TimeEntry>;
+  ...OmitProperties<Create<TimeEntry>, "comments" | "spent_on">;
+  ...OptionalProperties<PickProperties<
+    Create<TimeEntry>,
+    "comments" | "spent_on"
+  >>;
 }
 
 /**

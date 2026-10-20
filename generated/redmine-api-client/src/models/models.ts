@@ -852,15 +852,15 @@ export interface Issue {
   /**
    * Start date
    */
-  startDate?: string | null;
+  startDate: string | null;
   /**
    * Due date
    */
-  dueDate?: string | null;
+  dueDate: string | null;
   /**
    * Estimated hours
    */
-  estimatedHours?: number | null;
+  estimatedHours: number | null;
   /**
    * Spent hours (only if the user is allowed to view time entries)
    */
@@ -876,7 +876,7 @@ export interface Issue {
   /**
    * Is issue private
    */
-  isPrivate?: boolean;
+  isPrivate: boolean;
   /**
    * Custom field values
    */
@@ -892,7 +892,7 @@ export interface Issue {
   /**
    * Issue closed date
    */
-  closedOn?: Date | null;
+  closedOn: Date | null;
   /**
    * Child issues (`include=children`)
    */
@@ -1074,11 +1074,11 @@ export interface JournalDetail {
   /**
    * Previous value
    */
-  oldValue?: string | null;
+  oldValue: string | null;
   /**
    * New value
    */
-  newValue?: string | null;
+  newValue: string | null;
 }
 /**
  * Uploaded file to attach to an object (e.g. `uploads` of an issue)
@@ -1120,7 +1120,8 @@ export interface CreateIssueDto {
   issue: CreateIssue;
 }
 /**
- * Issue create payload. `description` and `done_ratio` are always returned, but optional on create.
+ * Issue create payload. `description`, `start_date`, `due_date`, `done_ratio`, `estimated_hours` and `is_private` are
+ * always returned, but optional on create.
  */
 export interface CreateIssue {
   /**
@@ -1160,22 +1161,6 @@ export interface CreateIssue {
    */
   parentIssueId?: number | null;
   /**
-   * Start date
-   */
-  startDate?: string | null;
-  /**
-   * Due date
-   */
-  dueDate?: string | null;
-  /**
-   * Estimated hours
-   */
-  estimatedHours?: number | null;
-  /**
-   * Is issue private
-   */
-  isPrivate?: boolean;
-  /**
    * Custom field values
    */
   customFields?: Array<CreateCustomFieldValue>;
@@ -1195,6 +1180,22 @@ export interface CreateIssue {
    * Done ratio
    */
   doneRatio?: number;
+  /**
+   * Start date
+   */
+  startDate?: string | null;
+  /**
+   * Due date
+   */
+  dueDate?: string | null;
+  /**
+   * Estimated hours
+   */
+  estimatedHours?: number | null;
+  /**
+   * Is issue private
+   */
+  isPrivate?: boolean;
 }
 export interface UpdateIssueDto {
   issue: UpdateIssue;
@@ -2287,11 +2288,11 @@ export interface TimeEntry {
   /**
    * Comments (255 characters max)
    */
-  comments?: string | null;
+  comments: string | null;
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
-  spentOn?: string;
+  spentOn: string;
   /**
    * Custom field values
    */
@@ -2312,7 +2313,7 @@ export interface CreateTimeEntryDto {
   timeEntry: CreateTimeEntry;
 }
 /**
- * Time entry create payload
+ * Time entry create payload. `comments` and `spent_on` are always returned, but optional on create.
  */
 export interface CreateTimeEntry {
   /**
@@ -2336,17 +2337,17 @@ export interface CreateTimeEntry {
    */
   hours: number;
   /**
+   * Custom field values
+   */
+  customFields?: Array<CreateCustomFieldValue>;
+  /**
    * Comments (255 characters max)
    */
   comments?: string | null;
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
   spentOn?: string;
-  /**
-   * Custom field values
-   */
-  customFields?: Array<CreateCustomFieldValue>;
 }
 export interface UpdateTimeEntryDto {
   timeEntry: UpdateTimeEntry;
@@ -2380,7 +2381,7 @@ export interface UpdateTimeEntry {
    */
   comments?: string | null;
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
   spentOn?: string;
   /**
@@ -2466,7 +2467,7 @@ export interface Version {
   /**
    * Due date
    */
-  dueDate?: string | null;
+  dueDate: string | null;
   /**
    * Version sharing
    */
@@ -2518,17 +2519,14 @@ export interface CreateVersionDto {
   version: CreateVersion;
 }
 /**
- * Version create payload. `description`, `status` (default `open`) and `sharing` (default `none`) are optional on create.
+ * Version create payload. `description`, `status` (default `open`), `due_date` and `sharing` (default `none`) are optional
+ * on create.
  */
 export interface CreateVersion {
   /**
    * Version name
    */
   name: string;
-  /**
-   * Due date
-   */
-  dueDate?: string | null;
   /**
    * Title of the wiki page of this version
    */
@@ -2545,6 +2543,10 @@ export interface CreateVersion {
    * Version status
    */
   status?: VersionStatus;
+  /**
+   * Due date
+   */
+  dueDate?: string | null;
   /**
    * Version sharing
    */

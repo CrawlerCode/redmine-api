@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import {
   IssueQueryInclude,
   type RedmineClient,
@@ -126,4 +127,19 @@ export async function createWikiPage(client: RedmineClient, projectId: number, t
     wikiPage: { text: `Text of ${title}`, ...page },
   });
   return created!.wikiPage;
+}
+
+/** Files in `tests/fixtures` with their content type, e.g. to test binary up- and downloads */
+export const fixtureFiles = {
+  "redmine-logo.png": "image/png",
+  "redmine-logo.jpg": "image/jpeg",
+  "redmine-logo.gif": "image/gif",
+  "redmine-logo.pdf": "application/pdf",
+  // Every byte value once, so any text decoding of the content shows up
+  "bytes.bin": "application/octet-stream",
+} as const;
+
+/** Reads a file of `tests/fixtures` */
+export async function readFixture(filename: keyof typeof fixtureFiles) {
+  return new Uint8Array(await readFile(new URL(`../fixtures/${filename}`, import.meta.url)));
 }

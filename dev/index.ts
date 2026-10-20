@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { writeFile } from "node:fs/promises";
 import { RedmineClient } from "redmine-api-client";
 
 const client = new RedmineClient(
@@ -25,6 +26,22 @@ async function* getAllIssues(options: Parameters<typeof client.issuesClient.getI
     if (page.issues.length < limit) return;
   }
 }
+
+/**
+ * Download an attachment and its thumbnail by attachment ID.
+ */
+async function getAttachmentAndDownload(attachmentId: number) {
+  const attachment = await client.attachmentsClient.getAttachment(attachmentId);
+  const file = await client.attachmentsClient.downloadAttachment(attachmentId);
+  const thumbnail = await client.attachmentsClient.getAttachmentThumbnailWithSize(attachmentId, 200);
+
+  await writeFile(attachment.attachment.filename, file);
+  await writeFile(`thumbnail_${attachment.attachment.filename}`, thumbnail);
+}
+
+/**
+ * Test stuff
+ */
 
 for await (const issue of getAllIssues()) {
   console.log(issue);

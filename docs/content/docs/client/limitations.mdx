@@ -9,8 +9,3 @@ The tests mark these cases as expected failures (`it.fails`), so they show up as
   Query parameters with an empty string value are left out of the request, so `all_words=""` (search for any word) and `status=""` (users of all
   statuses) can't be used.
 </Callout>
-
-<Callout title="Attachment downloads">
-  Attachment downloads and thumbnails can't be read through the client. Use the `contentUrl` of the attachment instead, with the API key in the
-  `X-Redmine-API-Key` header.
-</Callout>
