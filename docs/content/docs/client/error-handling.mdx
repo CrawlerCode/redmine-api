@@ -14,7 +14,7 @@ When Redmine answers with a status code that isn't a success response of the ope
 | `response` | The raw response                                                                                 |
 | `message`  | e.g. `Unexpected HTTP status code: 404 - HTTP 404 received for GET …`                            |
 
-Network errors (server not reachable, invalid certificate) are thrown as they are, so they aren't a `RestError`.
+Network errors (server not reachable, invalid certificate) are thrown by the runtime as its own `RestError` class from `@typespec/ts-http-runtime`, exported as `RuntimeRestError`. It has a `code` such as `"ECONNREFUSED"`, but no `status`, so it isn't the exported `RestError`. See [Network errors](#network-errors).
 
 ## Status codes
 
@@ -28,15 +28,15 @@ Network errors (server not reachable, invalid certificate) are thrown as they ar
 
 ## Checking the status
 
-`isRestError` checks if an error is a `RestError`, optionally with the given status code. It compares the status as a number, so you don't have to convert the string:
+`isRedmineRestError` checks if an error is a `RestError` with the given status code. It compares the status as a number, so you don't have to convert the string:
 
 ```ts
-import { isRestError } from "redmine-api-client";
+import { isRedmineRestError } from "redmine-api-client";
 
 try {
   await client.issuesClient.createIssue({ issue: { projectId: 1, subject: "" } });
 } catch (error) {
-  if (isRestError(error, 422)) {
+  if (isRedmineRestError(error, 422)) {
     console.error(error.body?.errors); // ["Subject cannot be blank"]
   } else {
     throw error;
@@ -58,6 +58,28 @@ if (error instanceof RestError) {
   `body` is typed as `any`, as each status code has its own body. Only `422` responses have `errors`, so access them with optional chaining.
 </Callout>
 
+## Network errors
+
+Without a status code, `isRedmineRestError` matches error responses and network errors, e.g. to show one message for every failed request:
+
+```ts
+try {
+  await client.issuesClient.getIssue(1);
+} catch (error) {
+  if (isRedmineRestError(error)) {
+    toast.error(`API error: ${error.message}`);
+  } else {
+    throw error;
+  }
+}
+```
+
+The narrowed error is a `RestError` or the runtime's error, so only their shared properties (`name`, `message`, `request`, `response`) are available without further checks. Use `error instanceof RestError` or `error instanceof RuntimeRestError` to tell them apart. With a status code, network errors never match, as they have no status.
+
+<Callout>
+  The runtime retries network errors a few times with a backoff before throwing. Pass `retryOptions: { maxRetries: 0 }` to the client options to fail right away.
+</Callout>
+
 ## Not found
 
 To treat a missing resource as `undefined` instead of an error:
@@ -67,7 +89,7 @@ const findIssue = async (id: number) => {
   try {
     return (await client.issuesClient.getIssue(id)).issue;
   } catch (error) {
-    if (isRestError(error, 404)) return undefined;
+    if (isRedmineRestError(error, 404)) return undefined;
     throw error;
   }
 };
