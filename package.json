@@ -1,7 +1,7 @@
 {
   "name": "redmine-api-monorepo",
   "description": "Redmine API Monorepo",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "author": "CrawlerCode",
   "keywords": [],
   "license": "MIT",
