@@ -5,13 +5,13 @@ export const docsRoute = "/docs";
 export const docsContentRoute = "/llms.mdx/docs";
 
 /**
- * Base path of the site, e.g. `/redmine-api-client` on GitHub Pages
+ * Base path of the site, e.g. `/redmine-api` on GitHub Pages
  */
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const gitConfig = {
   user: "CrawlerCode",
-  repo: "redmine-api-client",
+  repo: "redmine-api",
   branch: "main",
 };
 

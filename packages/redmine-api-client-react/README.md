@@ -2,7 +2,7 @@
 
 [TanStack Query](https://tanstack.com/query) options, hooks and a provider for [`redmine-api-client`](https://www.npmjs.com/package/redmine-api-client). Works with React 18 and 19 and TanStack Query 5.
 
-**Documentation:** [crawlercode.github.io/redmine-api-client](https://crawlercode.github.io/redmine-api-client/docs/react)
+**Documentation:** [crawlercode.github.io/redmine-api](https://crawlercode.github.io/redmine-api/docs/react)
 
 ## Quick start
 

@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CrawlerCode/redmine-api-client.git",
+    "url": "git+https://github.com/CrawlerCode/redmine-api.git",
     "directory": "packages/redmine-api-client-react"
   },
-  "homepage": "https://github.com/CrawlerCode/redmine-api-client#readme",
+  "homepage": "https://crawlercode.github.io/redmine-api/docs/react",
   "bugs": {
-    "url": "https://github.com/CrawlerCode/redmine-api-client/issues"
+    "url": "https://github.com/CrawlerCode/redmine-api/issues"
   },
   "keywords": [
     "redmine",

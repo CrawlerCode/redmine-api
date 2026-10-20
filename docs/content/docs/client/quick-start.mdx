@@ -62,11 +62,7 @@ See [Authentication](/docs/client/authentication) for where to find the API key.
 ### Call the API
 
 ```ts
-import { IssueQueryInclude } from "redmine-api-client";
-
-const { issue } = await client.issuesClient.getIssue(42, {
-  include: [IssueQueryInclude.Journals],
-});
+const { issue } = await client.issuesClient.getIssue(42);
 
 console.log(issue.subject, issue.createdOn);
 ```
