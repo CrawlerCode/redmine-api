@@ -5322,16 +5322,16 @@ components:
             - type: "null"
           maxLength: 255
           description: Comments (255 characters max)
-        spent_on:
-          type: string
-          format: date
-          description: Date the time was spent (defaults to the current date)
         custom_fields:
           type: array
           items:
             $ref: "#/components/schemas/CreateCustomFieldValue"
           description: Custom field values
-      description: Time entry create payload
+        spent_on:
+          type: string
+          format: date
+          description: Date the time was spent (defaults to the current date on create)
+      description: Time entry create payload. `spent_on` is always returned, but optional on create.
     TimeEntries.DTOs.CreateTimeEntryDto:
       type: object
       required:
@@ -5385,6 +5385,7 @@ components:
         - user
         - activity
         - hours
+        - spent_on
         - created_on
         - updated_on
       properties:
@@ -5433,7 +5434,7 @@ components:
         spent_on:
           type: string
           format: date
-          description: Date the time was spent (defaults to the current date)
+          description: Date the time was spent (defaults to the current date on create)
         custom_fields:
           type: array
           items:
@@ -5484,7 +5485,7 @@ components:
         spent_on:
           type: string
           format: date
-          description: Date the time was spent (defaults to the current date)
+          description: Date the time was spent (defaults to the current date on create)
         custom_fields:
           type: array
           items:

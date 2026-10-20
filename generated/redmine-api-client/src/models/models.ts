@@ -2289,9 +2289,9 @@ export interface TimeEntry {
    */
   comments?: string | null;
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
-  spentOn?: string;
+  spentOn: string;
   /**
    * Custom field values
    */
@@ -2312,7 +2312,7 @@ export interface CreateTimeEntryDto {
   timeEntry: CreateTimeEntry;
 }
 /**
- * Time entry create payload
+ * Time entry create payload. `spent_on` is always returned, but optional on create.
  */
 export interface CreateTimeEntry {
   /**
@@ -2340,13 +2340,13 @@ export interface CreateTimeEntry {
    */
   comments?: string | null;
   /**
-   * Date the time was spent (defaults to the current date)
-   */
-  spentOn?: string;
-  /**
    * Custom field values
    */
   customFields?: Array<CreateCustomFieldValue>;
+  /**
+   * Date the time was spent (defaults to the current date on create)
+   */
+  spentOn?: string;
 }
 export interface UpdateTimeEntryDto {
   timeEntry: UpdateTimeEntry;
@@ -2380,7 +2380,7 @@ export interface UpdateTimeEntry {
    */
   comments?: string | null;
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
   spentOn?: string;
   /**

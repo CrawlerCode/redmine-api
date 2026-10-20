@@ -3749,8 +3749,8 @@ export function jsonCreateTimeEntryToTransportTransform(input_?: CreateTimeEntry
     activity_id: input_.activityId,
     hours: input_.hours,
     comments: input_.comments,
-    spent_on: input_.spentOn,
     custom_fields: jsonArrayCreateCustomFieldValueToTransportTransform(input_.customFields),
+    spent_on: input_.spentOn,
   }!;
 }
 export function jsonCreateTimeEntryToApplicationTransform(input_?: any): CreateTimeEntry {
@@ -3764,8 +3764,8 @@ export function jsonCreateTimeEntryToApplicationTransform(input_?: any): CreateT
     activityId: input_.activity_id,
     hours: input_.hours,
     comments: input_.comments,
-    spentOn: input_.spent_on,
     customFields: jsonArrayCreateCustomFieldValueToApplicationTransform(input_.custom_fields),
+    spentOn: input_.spent_on,
   }!;
 }
 export function jsonUpdateTimeEntryDtoToTransportTransform(input_?: UpdateTimeEntryDto | null): any {

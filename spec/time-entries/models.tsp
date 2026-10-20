@@ -84,9 +84,9 @@ model TimeEntry {
   comments?: string | null;
 
   /**
-   * Date the time was spent (defaults to the current date)
+   * Date the time was spent (defaults to the current date on create)
    */
-  spent_on?: plainDate;
+  spent_on: plainDate;
 
   /**
    * Custom field values
@@ -107,10 +107,11 @@ model TimeEntry {
 }
 
 /**
- * Time entry create payload
+ * Time entry create payload. `spent_on` is always returned, but optional on create.
  */
 model CreateTimeEntry {
-  ...Create<TimeEntry>;
+  ...OmitProperties<Create<TimeEntry>, "spent_on">;
+  ...OptionalProperties<PickProperties<Create<TimeEntry>, "spent_on">>;
 }
 
 /**
