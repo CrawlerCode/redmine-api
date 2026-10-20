@@ -78,12 +78,12 @@ model JournalDetail {
   /**
    * Previous value
    */
-  old_value?: string | null;
+  old_value: string | null;
 
   /**
    * New value
    */
-  new_value?: string | null;
+  new_value: string | null;
 }
 
 /**

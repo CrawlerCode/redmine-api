@@ -16,9 +16,14 @@ describe("OpenAPI validator", () => {
     author: reference,
     subject: "Subject",
     description: null,
+    start_date: null,
+    due_date: null,
     done_ratio: 0,
+    is_private: false,
+    estimated_hours: null,
     created_on: "2026-01-01T00:00:00Z",
     updated_on: "2026-01-01T00:00:00Z",
+    closed_on: null,
   };
 
   it("picks the newest spec version not newer than the server", () => {
